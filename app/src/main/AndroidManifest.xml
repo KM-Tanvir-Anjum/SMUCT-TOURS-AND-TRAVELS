@@ -13,6 +13,9 @@
         android:theme="@style/Theme.TT"
         tools:targetApi="31">
         <activity
+            android:name=".Activity_User_Signup"
+            android:exported="false" />
+        <activity
             android:name=".user.SignInActivity"
             android:exported="false" />
         <activity
