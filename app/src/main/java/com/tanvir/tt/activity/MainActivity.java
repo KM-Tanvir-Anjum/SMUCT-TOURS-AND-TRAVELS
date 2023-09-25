@@ -21,17 +21,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        adminLoginBtn = findViewById(R.id.admin_logIn);
+        adminLoginBtn = findViewById(R.id.admin_login);
         userLogInBtn = findViewById(R.id.user_logIn);
 
 
-        adminLoginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, AdminLogInActivity.class);
-                startActivity(intent);
-            }
-        });
+       adminLoginBtn.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               Intent intent=new Intent(MainActivity.this,AdminLogInActivity.class);
+               startActivity(intent);
+           }
+       });
 
         userLogInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
