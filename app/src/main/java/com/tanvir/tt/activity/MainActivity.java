@@ -10,11 +10,12 @@ import android.widget.TextView;
 
 import com.tanvir.tt.R;
 import com.tanvir.tt.admin.AdminLogInActivity;
+import com.tanvir.tt.user.HomeActivity;
 import com.tanvir.tt.user.SignInActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button adminLoginBtn, userLogInBtn;
+    Button adminLoginBtn, userLogInBtn, guestVisitBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         adminLoginBtn = findViewById(R.id.admin_login);
         userLogInBtn = findViewById(R.id.user_logIn);
+        guestVisitBtn = findViewById(R.id.guest_visit);
 
 
        adminLoginBtn.setOnClickListener(new View.OnClickListener() {
@@ -37,6 +39,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, SignInActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        guestVisitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                intent.putExtra("guest","true");
                 startActivity(intent);
             }
         });

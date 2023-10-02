@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "900696136690",
+    "project_id": "bus-ticket-56131",
+    "storage_bucket": "bus-ticket-56131.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:900696136690:android:1d54ee871151069343e96b",
+        "android_client_info": {
+          "package_name": "com.tanvir.tt"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHocSkC0ajKrw6kexitLZejfMjuBOAE0U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

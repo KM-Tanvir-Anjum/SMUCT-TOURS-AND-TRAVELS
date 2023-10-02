@@ -5,7 +5,19 @@
         <item name="colorPrimary">@color/bg_color</item> -->
     </style>
 
+
+
     <style name="Theme.TT" parent="Base.Theme.TT" />
+
+    <style name="Theme.RemoveSplashScreenTheme" parent="@style/Base.Theme.TT">
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+    <style name="Theme.TT.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.TT.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.TT.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
 </resources>

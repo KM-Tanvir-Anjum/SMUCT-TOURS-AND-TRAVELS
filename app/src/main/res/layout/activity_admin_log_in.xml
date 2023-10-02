@@ -8,7 +8,7 @@
     android:background="@color/white">
 
     <ImageView
-        android:id="@+id/sign_in_backBtn"
+        android:id="@+id/admin_login_backBtn"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:src="@drawable/back_icon"/>
@@ -80,7 +80,7 @@
 
         <Button
             android:id="@+id/Admin_register"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_gravity="center"
             android:layout_height="40dp"
             android:text="Register"

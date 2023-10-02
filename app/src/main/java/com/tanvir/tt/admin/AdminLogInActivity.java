@@ -16,6 +16,8 @@ public class AdminLogInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_log_in);
 
+        backBtn = findViewById(R.id.admin_login_backBtn);
+
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
