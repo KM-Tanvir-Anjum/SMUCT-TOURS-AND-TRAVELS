@@ -53,37 +53,40 @@ public class SignUpActivity extends AppCompatActivity {
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful())
-                        {
+                if (!firstName.getText().toString().equals("") && !lastName.getText().toString().equals("") && !email.getText().toString().equals("") && !phone.getText().toString().equals("") && !password.getText().toString().equals("") && confirmPassword.getText().toString().equals(password.getText().toString()) )
+                {
+                    mAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful())
+                            {
 
-                            currentUser = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
+                                currentUser = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
 
-                            HashMap<String, Object> map = new HashMap<String, Object>();
-                            map.put("name", firstName.getText().toString()+" "+lastName.getText().toString());
-                            map.put("email", email.getText().toString());
-                            map.put("phone", phone.getText().toString());
-                            map.put("password", password.getText().toString());
+                                HashMap<String, Object> map = new HashMap<String, Object>();
+                                map.put("name", firstName.getText().toString()+" "+lastName.getText().toString());
+                                map.put("email", email.getText().toString());
+                                map.put("phone", phone.getText().toString());
+                                map.put("password", password.getText().toString());
 
-                            userReference.child(currentUser).updateChildren(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful())
-                                    {
-                                        Intent intent = new Intent(SignUpActivity.this, HomeActivity.class);
-                                        intent.putExtra("guest","false");
-                                        startActivity(intent);
-                                        finish();
+                                userReference.child(currentUser).updateChildren(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful())
+                                        {
+                                            Intent intent = new Intent(SignUpActivity.this, HomeActivity.class);
+                                            intent.putExtra("guest","false");
+                                            startActivity(intent);
+                                            finish();
+                                        }
                                     }
-                                }
-                            });
+                                });
+
+                            }
 
                         }
-
-                    }
-                });
+                    });
+                }
             }
         });
 

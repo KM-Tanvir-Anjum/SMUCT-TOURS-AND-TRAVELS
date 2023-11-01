@@ -3,6 +3,7 @@
     <style name="Base.Theme.TT" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <item name="colorPrimary">@color/bg_color</item>
+
     </style>
 
 

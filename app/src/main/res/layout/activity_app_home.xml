@@ -11,7 +11,6 @@
         android:layout_height="match_parent">
 
         <EditText
-
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:padding="16dp"
@@ -47,7 +46,7 @@
             <Button
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:text="Log In"
+                android:text="Buy Ticket"
                 android:layout_marginTop="22dp"
                 android:layout_margin="10dp"
                 android:background="@drawable/bg_btn"
@@ -60,7 +59,7 @@
             <Button
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:text="Log In"
+                android:text=""
                 android:layout_marginTop="22dp"
                 android:layout_margin="10dp"
                 android:background="@drawable/bg_btn"

@@ -40,19 +40,22 @@ public class SignInActivity extends AppCompatActivity {
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mAuth.signInWithEmailAndPassword(email.getText().toString(), password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task)
-                    {
-                        if (task.isSuccessful())
+                if (!email.getText().toString().equals("") && !password.getText().toString().equals(""))
+                {
+                    mAuth.signInWithEmailAndPassword(email.getText().toString(), password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task)
                         {
-                            Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
-                            intent.putExtra("guest","false");
-                            startActivity(intent);
-                            finish();
+                            if (task.isSuccessful())
+                            {
+                                Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
+                                intent.putExtra("guest","false");
+                                startActivity(intent);
+                                finish();
+                            }
                         }
-                    }
-                });
+                    });
+                }
             }
         });
 

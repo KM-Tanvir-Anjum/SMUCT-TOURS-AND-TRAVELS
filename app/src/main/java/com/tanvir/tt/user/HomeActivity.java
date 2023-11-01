@@ -4,11 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -21,6 +23,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 import com.tanvir.tt.R;
 import com.tanvir.tt.activity.MainActivity;
 
@@ -32,13 +35,14 @@ public class HomeActivity extends AppCompatActivity {
 
     LinearLayout userLayout, guestLayout;
     TextView name, email, phone, forLogIn, logOutBtn;
+    ImageView notice;
     private String currentUser, guest = "false";
     FirebaseAuth mAuth;
-    DatabaseReference userReference;
+    DatabaseReference userReference, noticeReff;
 
 
     // -------------- For User --------------- //
-    Spinner dateSpinner, timeSpinner, fromSpinner, toSpinner;
+    Spinner dateSpinner, timeSpinner, fromSpinner, toSpinner, companyNameSpinner;
     Button nextBtn;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
 
@@ -56,6 +60,7 @@ public class HomeActivity extends AppCompatActivity {
         email = findViewById(R.id.profile_email);
         phone = findViewById(R.id.profile_number);
         logOutBtn = findViewById(R.id.log_out_btn);
+        notice = findViewById(R.id.notice_board);
 
 
         guestLayout = findViewById(R.id.guest_layout);
@@ -118,6 +123,7 @@ public class HomeActivity extends AppCompatActivity {
         timeSpinner = findViewById(R.id.schedule_time);
         fromSpinner = findViewById(R.id.from_spinner);
         toSpinner = findViewById(R.id.to_spinner);
+        companyNameSpinner = findViewById(R.id.company_name);
         nextBtn = findViewById(R.id.nextBtn);
 
         fromSpinnerData(fromSpinner);
@@ -166,21 +172,61 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        timeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedItem = parent.getItemAtPosition(position).toString();
+                //Toast.makeText(HomeActivity.this, "Selected: " + selectedItem, Toast.LENGTH_SHORT).show();
+                CompanySpinnerData(companyNameSpinner, fromSpinner.getSelectedItem().toString() + toSpinner.getSelectedItem().toString()+ dateSpinner.getSelectedItem().toString()+selectedItem);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               /** if (fromSpinner.getSelectedItem().toString() != "Select" && toSpinner.getSelectedItem().toString() != "Select"
+               if (fromSpinner.getSelectedItem().toString() != "Select" && toSpinner.getSelectedItem().toString() != "Select"
                         && dateSpinner.getSelectedItem().toString() != "Select" && timeSpinner.getSelectedItem().toString() != "Select") {
 
-                }*/
-                Intent intent = new Intent(HomeActivity.this, TicketActivity.class);
-                //intent.putExtra("fromTo", fromSpinner.getSelectedItem().toString() + toSpinner.getSelectedItem().toString());
-                //intent.putExtra("DateTime", dateSpinner.getSelectedItem().toString() + timeSpinner.getSelectedItem().toString());
-                startActivity(intent);
+                   Intent intent = new Intent(HomeActivity.this, TicketActivity.class);
+                   intent.putExtra("fromTo", fromSpinner.getSelectedItem().toString() + toSpinner.getSelectedItem().toString());
+                   intent.putExtra("DateTime", dateSpinner.getSelectedItem().toString() + timeSpinner.getSelectedItem().toString());
+                   intent.putExtra("companyName", companyNameSpinner.getSelectedItem().toString());
+                   startActivity(intent);
+
+                }
+
+
+            }
+        });
+
+        noticeReff = FirebaseDatabase.getInstance().getReference().child("Notice");
+
+        noticeReff.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot)
+            {
+                if (snapshot.exists())
+                {
+                    String img = Objects.requireNonNull(snapshot.child("url").getValue()).toString();
+                    Picasso.get()
+                            .load(img.toString())
+                            .into(notice);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
     }
+
+
 
     private void fromSpinnerData(Spinner fromSpinner) {
         DatabaseReference dateRef = database.getReference("Bus Schedule").child("From");
@@ -311,5 +357,38 @@ public class HomeActivity extends AppCompatActivity {
 
 
     }
+
+    private void CompanySpinnerData(Spinner companyNameSpinner, String fromToDate) {
+        try {
+            DatabaseReference timeRef = database.getReference("Bus Schedule").child(fromToDate);
+            timeRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    List<String> data = new ArrayList<>();
+                    data.add("Select");
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        String item = snapshot.getValue(String.class);
+                        data.add(item);
+                    }
+
+                    // Create an ArrayAdapter using the data list
+                    ArrayAdapter<String> adapter = new ArrayAdapter<>(HomeActivity.this, android.R.layout.simple_spinner_item, data);
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+                    // Set the adapter to the Spinner
+                    companyNameSpinner.setAdapter(adapter);
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError error) {
+                    // Handle error
+                }
+            });
+        } catch (Exception e) {
+            Toast.makeText(this, "'To' or 'Date' not select", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
 }
