@@ -26,7 +26,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.tanvir.tt.R;
 import com.tanvir.tt.activity.MainActivity;
-import com.tanvir.tt.activity.SplashActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,7 +41,7 @@ public class AdminHomeActivity extends AppCompatActivity {
 
     LinearLayout  ownerHomeLayout, newTicketUploadLayout, deleteTicketlayout;
     Button  uploadBtn;
-    EditText  ticketPrice;
+    EditText  ticketPrice, coachNo;
     TextView uploadNewTicketBtn, DeleteTicketBtn, logOutBtn, companyProfile;
     ImageView newTicketUploadLayoutBackBtn;
     Spinner newFrom, newTo, newDay, newMonth, newYear, newHour, newMinute, newAmPm;
@@ -80,6 +79,7 @@ public class AdminHomeActivity extends AppCompatActivity {
         uploadBtn = findViewById(R.id.upload_btn);
         newTicketUploadLayoutBackBtn = findViewById(R.id.new_ticket_layout_back_btn);
         ticketPrice = findViewById(R.id.new_ticket_price);
+        coachNo = findViewById(R.id.coach_no);
 
         deleteFrom = findViewById(R.id.delete_from_spinner);
         deleteTo = findViewById(R.id.delete_to_spinner);
@@ -137,9 +137,9 @@ public class AdminHomeActivity extends AppCompatActivity {
                 if (newFrom.getSelectedItem().toString()!= "Select" && newTo.getSelectedItem().toString() != "Select"
                         && newDay.getSelectedItem().toString()!="dd" && newMonth.getSelectedItem().toString()!= "mm"
                         && newYear.getSelectedItem().toString()!= "yy" && newHour.getSelectedItem().toString()!="HH"
-                        && newMinute.getSelectedItem().toString()!="MM" && ticketPrice.getText().toString()!="")
+                        && newMinute.getSelectedItem().toString()!="MM" && ticketPrice.getText().toString()!="" && coachNo.getText().toString()!="")
                 {
-                    uploadData(newFrom, newTo, newDay, newMonth, newYear, newHour, newMinute, newAmPm, ticketPrice);
+                    uploadData(newFrom, newTo, newDay, newMonth, newYear, newHour, newMinute, newAmPm, ticketPrice, coachNo);
 
                 }
             }
@@ -247,7 +247,7 @@ public class AdminHomeActivity extends AppCompatActivity {
 
 
 
-    private void uploadData(Spinner newFrom, Spinner newTo, Spinner newDay, Spinner newMonth, Spinner newYear, Spinner newHour, Spinner newMinute, Spinner newAmPm, EditText ticketPrice) {
+    private void uploadData(Spinner newFrom, Spinner newTo, Spinner newDay, Spinner newMonth, Spinner newYear, Spinner newHour, Spinner newMinute, Spinner newAmPm, EditText ticketPrice, EditText coachNo) {
 
         DatabaseReference scheduleRef = database.getReference("Bus Schedule");
         scheduleRef.child("From").child(newFrom.getSelectedItem().toString()).setValue(newFrom.getSelectedItem().toString());
@@ -297,6 +297,7 @@ public class AdminHomeActivity extends AppCompatActivity {
         ticket.put("phone", phoneNumber);
         ticket.put("email", email);
         ticket.put("price",ticketPrice.getText().toString());
+        ticket.put("coachNo",coachNo.getText().toString());
         ticket.put("from", newFrom.getSelectedItem().toString());
         ticket.put("to", newTo.getSelectedItem().toString());
         ticket.put("date", newDay.getSelectedItem().toString()+"-"+newMonth.getSelectedItem().toString()+"-"+newYear.getSelectedItem().toString());

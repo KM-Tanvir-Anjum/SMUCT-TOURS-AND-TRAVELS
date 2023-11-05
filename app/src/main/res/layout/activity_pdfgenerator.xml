@@ -1,193 +1,1211 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="150dp">
 
 
     <LinearLayout
-        android:id="@+id/pdf_ticket_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_marginTop="30dp">
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="130dp"
+            android:background="@drawable/bg_black_box">
+
+            <TextView
+                android:id="@+id/bus_name_for_ticket"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:text="Bus Name"
+                android:textSize="18sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_black_box">
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/logo"/>
-
-        <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Bus Ticket"
-            android:textStyle="bold"
-            android:textSize="25sp"/>
+            android:layout_height="130dp"
+            android:layout_marginStart="40dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@mipmap/logo1"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp">
+            android:layout_width="600dp"
+            android:layout_height="30dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="30dp"
+                android:background="@drawable/bg_black_box"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center"
+                    android:text="Departure Date : "
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:id="@+id/date_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center"
+                    android:text="Deperture Date"
+                    android:layout_marginStart="10dp"
+                    android:textSize="15sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="30dp"
+                android:background="@drawable/bg_black_box"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center"
+                    android:text="Deperture Time : "
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:id="@+id/time_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center"
+                    android:text="Deperture Time"
+                    android:layout_marginStart="10dp"
+                    android:textSize="15sp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="600dp"
+        android:layout_height="30dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="30dp"
+            android:background="@drawable/bg_box"
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:text="From"
-                android:textSize="17dp"/>
-
-            <TextView
-                android:id="@+id/from"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:textSize="17dp" />
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginStart="10dp"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:text="Coach No : "
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/coach_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:text="Coach No"
+                android:layout_marginStart="10dp"
+                android:textSize="15sp"/>
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp">
+            android:layout_width="300dp"
+            android:layout_height="30dp"
+            android:background="@drawable/bg_box"
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:text="To"
-                android:textSize="17dp"/>
-
-            <TextView
-                android:id="@+id/to"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:textSize="17dp"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp">
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginStart="10dp"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:text="Seat No : "
+                android:textSize="15sp"/>
 
             <TextView
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:text="Departure Date"
-                android:textSize="17dp"/>
-
-            <TextView
-                android:id="@+id/date"
+                android:id="@+id/seat_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:textSize="17dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp">
-
-            <TextView
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:text="Departure Time"
-                android:textSize="17dp"/>
-
-            <TextView
-                android:id="@+id/time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="09-30AM"
-                android:textSize="17dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp">
-
-            <TextView
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:text="Seat"
-                android:textSize="17dp"/>
-
-            <TextView
-                android:id="@+id/seat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="(A1)(A2)(A3)"
-                android:textSize="17dp"/>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp">
-
-            <TextView
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:text="Price"
-                android:textSize="17dp"/>
-
-            <TextView
-                android:id="@+id/price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="3x500 = 1500 Taka"
-                android:textSize="17dp"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp">
-
-            <TextView
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:text="Contact"
-                android:textSize="17dp"/>
-
-            <TextView
-                android:id="@+id/contact"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="016XXXXXXXX"
-                android:textSize="17dp"/>
+                android:textColor="@color/black"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:text="Seat No"
+                android:layout_marginStart="10dp"
+                android:textSize="15sp"/>
 
         </LinearLayout>
 
     </LinearLayout>
-</LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="600dp"
+        android:layout_height="30dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="30dp"
+            android:background="@drawable/bg_black_box"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginStart="10dp"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:text="From : "
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/from_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:text="From"
+                android:layout_marginStart="10dp"
+                android:textSize="15sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="30dp"
+            android:background="@drawable/bg_black_box"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginStart="10dp"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:text="To : "
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/to_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:text="To"
+                android:layout_marginStart="10dp"
+                android:textSize="15sp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="600dp"
+        android:layout_height="30dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="30dp"
+            android:background="@drawable/bg_box"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginStart="10dp"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:text="Price : "
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/price_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:text="Price"
+                android:layout_marginStart="10dp"
+                android:textSize="15sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="30dp"
+            android:background="@drawable/bg_box"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginStart="10dp"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:text="Reporting : "
+                android:textSize="15sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:text="30 minutes before"
+                android:layout_marginStart="10dp"
+                android:textSize="15sp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="600dp"
+        android:layout_height="30dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="30dp"
+            android:background="@drawable/bg_black_box"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginStart="10dp"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:text="Name : "
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/name_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:text="Name"
+                android:layout_marginStart="10dp"
+                android:textSize="15sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="30dp"
+            android:background="@drawable/bg_black_box"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginStart="10dp"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:text="Mobile : "
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/mobile_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:text="Mobile"
+                android:layout_marginStart="10dp"
+                android:textSize="15sp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="600dp"
+        android:layout_height="420dp"
+        android:background="@drawable/bg_box"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:padding="8dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                android:text="Terms And Condition"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                android:text="1.This ticket has been issued by T and T on behalf of the bus operator as per  T and T’s Terms of use.
+ T and T is ONLY a bus ticket agent, it does not operate bus services of its own."
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="2dp"
+                android:text="2. The passengers are requested to arrive at the boarding point 20 minutes prior to bus departure
+time. If not, then the ticket will be considered cancelled."
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="2dp"
+                android:text="3. Without a paper copy of the ticket, passengers may not be allowed to board the bus."
+                android:textSize="14sp"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="2dp"
+                android:text="4. The bus operator reserves the right to cancel/delay trips, change buses and change seats due to
+ unavoidable reasons."
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="2dp"
+                android:text="5. Each passenger can carry 10 kg luggage. There will be charge of 10BDT/kg for every kg excess
+weight. The passenger must inform the operator if he is carrying luggage worth more than
+BDT 5000. The operator or T and T does not bear any consequences for the passenger carrying
+ illegal goods."
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="2dp"
+                android:text="6.Cancellation and Refund of tickets will be made as per policy stated on T and T, and subject to bus
+ operator's approval:
+       \n
+       You must apply for cancel and refund 12 hours before trip departure time (excluding 12 AM to
+7 AM).
+       \n
+       If the Bus operator cancels the trip after this period, you must apply for a refund within 24
+hours of trip departure time."
+                android:textSize="14sp"/>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="600dp"
+        android:layout_height="15dp"
+        android:textColor="@color/black"
+        android:text="- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bg_box"
+            android:gravity="center_horizontal"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:text="Bus's Copy"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="600dp"
+            android:layout_height="30dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="30dp"
+                android:background="@drawable/bg_black_box"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center"
+                    android:text="Departure Date : "
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:id="@+id/date_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center"
+                    android:text="Deperture Date"
+                    android:layout_marginStart="10dp"
+                    android:textSize="15sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="30dp"
+                android:background="@drawable/bg_black_box"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center"
+                    android:text="Deperture Time : "
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:id="@+id/time_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center"
+                    android:text="Deperture Time"
+                    android:layout_marginStart="10dp"
+                    android:textSize="15sp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="600dp"
+        android:layout_height="30dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="30dp"
+            android:background="@drawable/bg_box"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginStart="10dp"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:text="Coach No : "
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/coach_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:text="Coach No"
+                android:layout_marginStart="10dp"
+                android:textSize="15sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="30dp"
+            android:background="@drawable/bg_box"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginStart="10dp"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:text="Seat No : "
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/seat_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:text="Seat No"
+                android:layout_marginStart="10dp"
+                android:textSize="15sp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="600dp"
+        android:layout_height="30dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="30dp"
+            android:background="@drawable/bg_black_box"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginStart="10dp"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:text="From : "
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/from_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:text="From"
+                android:layout_marginStart="10dp"
+                android:textSize="15sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="30dp"
+            android:background="@drawable/bg_black_box"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginStart="10dp"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:text="To : "
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/to_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:text="To"
+                android:layout_marginStart="10dp"
+                android:textSize="15sp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="600dp"
+        android:layout_height="30dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="30dp"
+            android:background="@drawable/bg_box"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginStart="10dp"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:text="Price : "
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/price_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:text="Price"
+                android:layout_marginStart="10dp"
+                android:textSize="15sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="30dp"
+            android:background="@drawable/bg_box"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginStart="10dp"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:text="Reporting : "
+                android:textSize="15sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:text="30 minutes before"
+                android:layout_marginStart="10dp"
+                android:textSize="15sp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="600dp"
+        android:layout_height="30dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="30dp"
+            android:background="@drawable/bg_black_box"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginStart="10dp"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:text="Name : "
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/name_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:text="Name"
+                android:layout_marginStart="10dp"
+                android:textSize="15sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="30dp"
+            android:background="@drawable/bg_black_box"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginStart="10dp"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:text="Mobile : "
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/mobile_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:text="Mobile"
+                android:layout_marginStart="10dp"
+                android:textSize="15sp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+        <TextView
+            android:layout_width="600dp"
+            android:layout_height="15dp"
+            android:textColor="@color/black"
+            android:text="- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bg_box"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center"
+            android:text="Counter's Copy"
+            android:textSize="18sp"/>
+
+
+        <LinearLayout
+            android:layout_width="600dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="30dp"
+                android:background="@drawable/bg_black_box"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center"
+                    android:text="Departure Date : "
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:id="@+id/date_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center"
+                    android:text="Deperture Date"
+                    android:layout_marginStart="10dp"
+                    android:textSize="15sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="30dp"
+                android:background="@drawable/bg_black_box"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center"
+                    android:text="Deperture Time : "
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:id="@+id/time_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center"
+                    android:text="Deperture Time"
+                    android:layout_marginStart="10dp"
+                    android:textSize="15sp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="600dp"
+            android:layout_height="30dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="30dp"
+                android:background="@drawable/bg_box"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center"
+                    android:text="Coach No : "
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:id="@+id/coach_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center"
+                    android:text="Coach No"
+                    android:layout_marginStart="10dp"
+                    android:textSize="15sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="30dp"
+                android:background="@drawable/bg_box"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center"
+                    android:text="Seat No : "
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:id="@+id/seat_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center"
+                    android:text="Seat No"
+                    android:layout_marginStart="10dp"
+                    android:textSize="15sp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="600dp"
+            android:layout_height="30dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="30dp"
+                android:background="@drawable/bg_black_box"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center"
+                    android:text="From : "
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:id="@+id/from_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center"
+                    android:text="From"
+                    android:layout_marginStart="10dp"
+                    android:textSize="15sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="30dp"
+                android:background="@drawable/bg_black_box"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center"
+                    android:text="To : "
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:id="@+id/to_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center"
+                    android:text="To"
+                    android:layout_marginStart="10dp"
+                    android:textSize="15sp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="600dp"
+            android:layout_height="30dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="30dp"
+                android:background="@drawable/bg_box"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center"
+                    android:text="Price : "
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:id="@+id/price_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center"
+                    android:text="Price"
+                    android:layout_marginStart="10dp"
+                    android:textSize="15sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="30dp"
+                android:background="@drawable/bg_box"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center"
+                    android:text="Reporting : "
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center"
+                    android:text="30 minutes before"
+                    android:layout_marginStart="10dp"
+                    android:textSize="15sp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="600dp"
+            android:layout_height="30dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="30dp"
+                android:background="@drawable/bg_black_box"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center"
+                    android:text="Name : "
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:id="@+id/name_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center"
+                    android:text="Name"
+                    android:layout_marginStart="10dp"
+                    android:textSize="15sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="30dp"
+                android:background="@drawable/bg_black_box"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center"
+                    android:text="Mobile : "
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:id="@+id/mobile_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center"
+                    android:text="Mobile"
+                    android:layout_marginStart="10dp"
+                    android:textSize="15sp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+</androidx.core.widget.NestedScrollView>

@@ -54,7 +54,7 @@ public class TicketActivity extends AppCompatActivity {
     public int seat;
     int seatPrice = 250;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference userRef;
+    DatabaseReference userRef, databaseReference;
 
     //----------- for ticket pdf ----------//
     LinearLayout ticketLayout, downloadLayout;
@@ -65,6 +65,9 @@ public class TicketActivity extends AppCompatActivity {
 
     FirebaseAuth mAuth;
     FirebaseUser currentUser;
+
+    String coachNo;
+    String push;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -279,7 +282,7 @@ public class TicketActivity extends AppCompatActivity {
 
 
                     HashMap<String, Object> map = new HashMap<String, Object>();
-                    map.put("Name", name.getText().toString());
+                    map.put("PassengerName", name.getText().toString());
                     map.put("From", from.getText().toString());
                     map.put("To", to.getText().toString());
                     map.put("Date", date.getText().toString());
@@ -288,7 +291,8 @@ public class TicketActivity extends AppCompatActivity {
                     map.put("Phone", contact.getText().toString());
                     map.put("Seat", finalSeatName);
                     map.put("Price", seatPrice);
-                    String push = from.getText().toString()+to.getText().toString()+finalSeatName;
+                    map.put("CoachNo", coachNo);
+                    push = from.getText().toString()+to.getText().toString()+finalSeatName;
 
                     userRef = FirebaseDatabase.getInstance().getReference().child("Customer");
                     userRef.child(currentUser.getUid()).child("MyTicket").child(push).updateChildren(map).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -304,7 +308,7 @@ public class TicketActivity extends AppCompatActivity {
                     });
                     userRef.child(currentUser.getUid()).child("MyTicketID").child(push).setValue(push);
 
-                    convertXmlToPdf();
+                    convertXmlToPdf(push, currentUser.getUid());
 
                 }
                 else
@@ -312,7 +316,7 @@ public class TicketActivity extends AppCompatActivity {
                     if (!passengerName.getText().toString().equals("") && !passengerContact.getText().toString().equals(""))
                     {
                         ticketDownloadBtn.setText("Thank You");
-                        convertXmlToPdf();
+                        guestConvertXmlToPdf(passengerName, passengerContact, from, to, date, time, comapanyName, finalSeatName, seatPrice, coachNo);
                         downloadLayout.setVisibility(View.GONE);
                         ticketLayout.setVisibility(View.VISIBLE);
                     }
@@ -342,6 +346,7 @@ public class TicketActivity extends AppCompatActivity {
                     A2 = snapshot.child("a2").getValue().toString();
                     A3 = snapshot.child("a3").getValue().toString();
                     A4 = snapshot.child("a4").getValue().toString();
+                    coachNo = snapshot.child("coachNo").getValue().toString();
                     String Price = snapshot.child("price").getValue().toString();
                     seatPrice = Integer.parseInt(Price);
 
@@ -457,25 +462,231 @@ public class TicketActivity extends AppCompatActivity {
     }
 
 
-    public void convertXmlToPdf() {
+    public void convertXmlToPdf(String push, String uid) {
         // Inflate the XML layout file
-        TextView fromL,toL,dateL,timeL,contactL,seatNameL,priceL;
+        TextView From1, To1, Date1, Time1, Price1, Seat1, Name1, Phone1,Coach1, BusName1, From2, To2, Date2, Time2, Price2, Seat2, Name2, Phone2,Coach2, From3, To3, Date3, Time3, Price3, Seat3, Name3, Phone3,Coach3;
         View view = LayoutInflater.from(this).inflate(R.layout.activity_pdfgenerator, null);
-        fromL = view.findViewById(R.id.from);
-        toL = view.findViewById(R.id.to);
-        dateL = view.findViewById(R.id.date);
-        timeL = view.findViewById(R.id.time);
-        contactL = view.findViewById(R.id.contact);
-        seatNameL = view.findViewById(R.id.seat);
-        priceL = view.findViewById(R.id.price);
+        From1 = view.findViewById(R.id.from_1);
+        To1 = view.findViewById(R.id.to_1);
+        Date1 = view.findViewById(R.id.date_1);
+        Time1 = view.findViewById(R.id.time_1);
+        Price1 = view.findViewById(R.id.price_1);
+        Seat1 = view.findViewById(R.id.seat_1);
+        Name1 = view.findViewById(R.id.name_1);
+        Phone1 = view.findViewById(R.id.mobile_1);
+        Coach1 = view.findViewById(R.id.coach_1);
+        BusName1 = view.findViewById(R.id.bus_name_for_ticket);
 
-        fromL.setText(from.getText().toString());
-        toL.setText(to.getText().toString());
-        dateL.setText(date.getText().toString());
-        timeL.setText(time.getText().toString());
-        seatNameL.setText(finalSeatName);
-        priceL.setText(price.getText().toString());
-        contactL.setText(contact.getText().toString());
+        From2 = view.findViewById(R.id.from_2);
+        To2 = view.findViewById(R.id.to_2);
+        Date2 = view.findViewById(R.id.date_2);
+        Time2 = view.findViewById(R.id.time_2);
+        Price2 = view.findViewById(R.id.price_2);
+        Seat2 = view.findViewById(R.id.seat_2);
+        Name2 = view.findViewById(R.id.name_2);
+        Phone2 = view.findViewById(R.id.mobile_2);
+        Coach2 = view.findViewById(R.id.coach_2);
+
+        From3 = view.findViewById(R.id.from_3);
+        To3 = view.findViewById(R.id.to_3);
+        Date3 = view.findViewById(R.id.date_3);
+        Time3 = view.findViewById(R.id.time_3);
+        Price3 = view.findViewById(R.id.price_3);
+        Seat3 = view.findViewById(R.id.seat_3);
+        Name3 = view.findViewById(R.id.name_3);
+        Phone3 = view.findViewById(R.id.mobile_3);
+        Coach3 = view.findViewById(R.id.coach_3);
+
+
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Customer");
+
+        databaseReference.child(uid).child("MyTicket").child(push).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot)
+            {
+
+                if (snapshot.exists())
+                {
+                    BusName1.setText(Objects.requireNonNull(snapshot.child("BusName").getValue()).toString());
+                    From1.setText(Objects.requireNonNull(snapshot.child("From").getValue()).toString());
+                    To1.setText(Objects.requireNonNull(snapshot.child("To").getValue()).toString());
+                    Date1.setText(Objects.requireNonNull(snapshot.child("Date").getValue()).toString());
+                    Time1.setText(Objects.requireNonNull(snapshot.child("Time").getValue()).toString());
+                    Seat1.setText(Objects.requireNonNull(snapshot.child("Seat").getValue()).toString());
+                    Price1.setText(Objects.requireNonNull(snapshot.child("Price").getValue()).toString());
+                    Phone1.setText(Objects.requireNonNull(snapshot.child("Phone").getValue()).toString());
+                    Coach1.setText(Objects.requireNonNull(snapshot.child("CoachNo").getValue()).toString());
+                    Name1.setText(Objects.requireNonNull(snapshot.child("PassengerName").getValue()).toString());
+
+
+                    From2.setText(Objects.requireNonNull(snapshot.child("From").getValue()).toString());
+                    To2.setText(Objects.requireNonNull(snapshot.child("To").getValue()).toString());
+                    Date2.setText(Objects.requireNonNull(snapshot.child("Date").getValue()).toString());
+                    Time2.setText(Objects.requireNonNull(snapshot.child("Time").getValue()).toString());
+                    Seat2.setText(Objects.requireNonNull(snapshot.child("Seat").getValue()).toString());
+                    Price2.setText(Objects.requireNonNull(snapshot.child("Price").getValue()).toString());
+                    Phone2.setText(Objects.requireNonNull(snapshot.child("Phone").getValue()).toString());
+                    Coach2.setText(Objects.requireNonNull(snapshot.child("CoachNo").getValue()).toString());
+                    Name2.setText(Objects.requireNonNull(snapshot.child("PassengerName").getValue()).toString());
+
+                    From3.setText(Objects.requireNonNull(snapshot.child("From").getValue()).toString());
+                    To3.setText(Objects.requireNonNull(snapshot.child("To").getValue()).toString());
+                    Date3.setText(Objects.requireNonNull(snapshot.child("Date").getValue()).toString());
+                    Time3.setText(Objects.requireNonNull(snapshot.child("Time").getValue()).toString());
+                    Seat3.setText(Objects.requireNonNull(snapshot.child("Seat").getValue()).toString());
+                    Price3.setText(Objects.requireNonNull(snapshot.child("Price").getValue()).toString());
+                    Phone3.setText(Objects.requireNonNull(snapshot.child("Phone").getValue()).toString());
+                    Coach3.setText(Objects.requireNonNull(snapshot.child("CoachNo").getValue()).toString());
+                    Name3.setText(Objects.requireNonNull(snapshot.child("PassengerName").getValue()).toString());
+
+                    DisplayMetrics displayMetrics = new DisplayMetrics();
+
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                        Objects.requireNonNull(TicketActivity.this.getDisplay()).getRealMetrics(displayMetrics);
+                    } else
+                        TicketActivity.this.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+
+                    view.measure(View.MeasureSpec.makeMeasureSpec(2480, View.MeasureSpec.EXACTLY),
+                            View.MeasureSpec.makeMeasureSpec(3508, View.MeasureSpec.EXACTLY));
+                    Log.d("mylog", "Width Now " + view.getMeasuredWidth());
+                    view.layout(0, 0, displayMetrics.widthPixels, displayMetrics.heightPixels);
+                    // Create a new PdfDocument instance
+                    PdfDocument document = new PdfDocument();
+
+                    // Obtain the width and height of the view
+                    int viewWidth = view.getMeasuredWidth();
+                    int viewHeight = view.getMeasuredHeight();
+                    // Create a PageInfo object specifying the page attributes
+                    PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(viewWidth, viewHeight, 1).create();
+
+                    // Start a new page
+                    PdfDocument.Page page = document.startPage(pageInfo);
+
+                    // Get the Canvas object to draw on the page
+                    Canvas canvas = page.getCanvas();
+
+                    // Create a Paint object for styling the view
+                    Paint paint = new Paint();
+                    paint.setColor(Color.WHITE);
+
+                    // Draw the view on the canvas
+                    view.draw(canvas);
+
+                    // Finish the page
+                    document.finishPage(page);
+
+                    // Specify the path and filename of the output PDF file
+                    File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+                    // Get the current time
+                    Date currentTime = new Date();
+
+                    // Format the time using SimpleDateFormat
+                    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+                    String formattedTime = sdf.format(currentTime);
+
+
+                    String fileName = "Ticket("+push+").pdf";
+                    File filePath = new File(downloadsDir, fileName);
+
+
+                    try {
+                        FileOutputStream fos = new FileOutputStream(filePath);
+                        document.writeTo(fos);
+                        document.close();
+                        fos.close();
+                        // PDF conversion successful
+                        Toast.makeText(TicketActivity.this, "Download Successful", Toast.LENGTH_LONG).show();
+                        fileName = "";
+
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        // Error occurred while converting to PDF
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+    }
+
+
+    public void guestConvertXmlToPdf(EditText passengerName, EditText passengerContact, TextView from, TextView to, TextView date, TextView time, String comapanyName, String finalSeatName, int seatPrice, String coachNo) {
+        // Inflate the XML layout file
+        TextView From1, To1, Date1, Time1, Price1, Seat1, Name1, Phone1,Coach1, BusName1, From2, To2, Date2, Time2, Price2, Seat2, Name2, Phone2,Coach2, From3, To3, Date3, Time3, Price3, Seat3, Name3, Phone3,Coach3;
+        View view = LayoutInflater.from(this).inflate(R.layout.activity_pdfgenerator, null);
+        From1 = view.findViewById(R.id.from_1);
+        To1 = view.findViewById(R.id.to_1);
+        Date1 = view.findViewById(R.id.date_1);
+        Time1 = view.findViewById(R.id.time_1);
+        Price1 = view.findViewById(R.id.price_1);
+        Seat1 = view.findViewById(R.id.seat_1);
+        Name1 = view.findViewById(R.id.name_1);
+        Phone1 = view.findViewById(R.id.mobile_1);
+        Coach1 = view.findViewById(R.id.coach_1);
+        BusName1 = view.findViewById(R.id.bus_name_for_ticket);
+
+        From2 = view.findViewById(R.id.from_2);
+        To2 = view.findViewById(R.id.to_2);
+        Date2 = view.findViewById(R.id.date_2);
+        Time2 = view.findViewById(R.id.time_2);
+        Price2 = view.findViewById(R.id.price_2);
+        Seat2 = view.findViewById(R.id.seat_2);
+        Name2 = view.findViewById(R.id.name_2);
+        Phone2 = view.findViewById(R.id.mobile_2);
+        Coach2 = view.findViewById(R.id.coach_2);
+
+        From3 = view.findViewById(R.id.from_3);
+        To3 = view.findViewById(R.id.to_3);
+        Date3 = view.findViewById(R.id.date_3);
+        Time3 = view.findViewById(R.id.time_3);
+        Price3 = view.findViewById(R.id.price_3);
+        Seat3 = view.findViewById(R.id.seat_3);
+        Name3 = view.findViewById(R.id.name_3);
+        Phone3 = view.findViewById(R.id.mobile_3);
+        Coach3 = view.findViewById(R.id.coach_3);
+
+
+        BusName1.setText(comapanyName);
+        From1.setText(from.getText().toString());
+        To1.setText(to.getText().toString());
+        Date1.setText(date.getText().toString());
+        Time1.setText(time.getText().toString());
+        Seat1.setText(finalSeatName);
+        Price1.setText(String.valueOf(seatPrice));
+        Phone1.setText(passengerContact.getText().toString());
+        Coach1.setText(coachNo);
+        Name1.setText(passengerName.getText().toString());
+
+
+        From2.setText(from.getText().toString());
+        To2.setText(to.getText().toString());
+        Date2.setText(date.getText().toString());
+        Time2.setText(time.getText().toString());
+        Seat2.setText(finalSeatName);
+        Price2.setText(String.valueOf(seatPrice));
+        Phone2.setText(passengerContact.getText().toString());
+        Coach2.setText(coachNo);
+        Name2.setText(passengerName.getText().toString());
+
+        From3.setText(from.getText().toString());
+        To3.setText(to.getText().toString());
+        Date3.setText(date.getText().toString());
+        Time3.setText(time.getText().toString());
+        Seat3.setText(finalSeatName);
+        Price3.setText(String.valueOf(seatPrice));
+        Phone3.setText(passengerContact.getText().toString());
+        Coach3.setText(coachNo);
+        Name3.setText(passengerName.getText().toString());
+
+
 
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -486,8 +697,8 @@ public class TicketActivity extends AppCompatActivity {
         } else
             this.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 
-        view.measure(View.MeasureSpec.makeMeasureSpec(displayMetrics.widthPixels, View.MeasureSpec.EXACTLY),
-                View.MeasureSpec.makeMeasureSpec(displayMetrics.heightPixels, View.MeasureSpec.EXACTLY));
+        view.measure(View.MeasureSpec.makeMeasureSpec(2480, View.MeasureSpec.EXACTLY),
+                View.MeasureSpec.makeMeasureSpec(3508, View.MeasureSpec.EXACTLY));
         Log.d("mylog", "Width Now " + view.getMeasuredWidth());
         view.layout(0, 0, displayMetrics.widthPixels, displayMetrics.heightPixels);
         // Create a new PdfDocument instance
@@ -525,8 +736,9 @@ public class TicketActivity extends AppCompatActivity {
         String formattedTime = sdf.format(currentTime);
 
 
-        String fileName = "Ticket("+formattedTime+").pdf";
+        String fileName = "Ticket("+From1.getText().toString()+To1.getText().toString()+finalSeatName+").pdf";
         File filePath = new File(downloadsDir, fileName);
+
 
         try {
             // Save the document to a file
@@ -536,10 +748,12 @@ public class TicketActivity extends AppCompatActivity {
             fos.close();
             // PDF conversion successful
             Toast.makeText(this, "Download Successful", Toast.LENGTH_LONG).show();
+
         } catch (IOException e) {
             e.printStackTrace();
             // Error occurred while converting to PDF
         }
+
 
     }
 
