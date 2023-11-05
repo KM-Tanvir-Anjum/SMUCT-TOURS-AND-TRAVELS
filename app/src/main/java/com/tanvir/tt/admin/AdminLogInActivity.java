@@ -9,15 +9,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.tanvir.tt.R;
-import com.tanvir.tt.user.HomeActivity;
-import com.tanvir.tt.user.SignInActivity;
-import com.tanvir.tt.user.SignUpActivity;
+import com.tanvir.tt.activity.ForgotPasswordActivity;
+
+import next.firenext.NextDatabase;
 
 public class AdminLogInActivity extends AppCompatActivity {
 
@@ -26,6 +27,7 @@ public class AdminLogInActivity extends AppCompatActivity {
 
     EditText email, password;
 
+    TextView forgotPassword;
     Button admin_signup, signIn;
     FirebaseAuth mAuth;
     @Override
@@ -40,6 +42,7 @@ public class AdminLogInActivity extends AppCompatActivity {
         password = findViewById(R.id.admin_sign_in_password);
         signIn = findViewById(R.id.admin_sign_in_btn);
         admin_signup = findViewById(R.id.admin_registration);
+        forgotPassword = findViewById(R.id.admin_log_in_forgotPassword);
 
 
         signIn.setOnClickListener(new View.OnClickListener() {
@@ -53,6 +56,7 @@ public class AdminLogInActivity extends AppCompatActivity {
                         {
                             if (task.isSuccessful())
                             {
+                                NextDatabase.add(getApplicationContext(),"user>condition:owner");
                                 Intent intent = new Intent(AdminLogInActivity.this, AdminHomeActivity.class);
                                 startActivity(intent);
                                 finish();
@@ -60,6 +64,14 @@ public class AdminLogInActivity extends AppCompatActivity {
                         }
                     });
                 }
+            }
+        });
+
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AdminLogInActivity.this, ForgotPasswordActivity.class);
+                startActivity(intent);
             }
         });
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".user.HomeActivity"
+    tools:context=".user.SeclectionTicketActivity"
     android:padding="16dp"
     android:background="@color/white">
 
@@ -13,43 +13,11 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/profile_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:visibility="gone">
-
-            <TextView
-                android:id="@+id/profile_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:gravity="center_horizontal"
-                android:textSize="18sp"
-                android:text="Full Name"/>
-
-            <TextView
-                android:id="@+id/profile_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:gravity="center_horizontal"
-                android:textSize="16sp"
-                android:text="xyz@gmail.com"/>
-
-            <TextView
-                android:id="@+id/profile_number"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:gravity="center_horizontal"
-                android:textSize="16sp"
-                android:text="0167XXXXXXX"/>
-
-        </LinearLayout>
-
+        <ImageView
+            android:id="@+id/selection_ticket_backBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/back_icon"/>
 
 
         <LinearLayout
@@ -238,17 +206,6 @@
             android:textStyle="bold" />
 
     </LinearLayout>
-    <TextView
-        android:id="@+id/log_out_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="Log out"
-        android:visibility="gone"
-        android:layout_alignParentBottom="true"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold" />
 
 
 

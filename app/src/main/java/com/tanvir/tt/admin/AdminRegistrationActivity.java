@@ -21,11 +21,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.tanvir.tt.R;
-import com.tanvir.tt.user.HomeActivity;
-import com.tanvir.tt.user.SignUpActivity;
 
 import java.util.HashMap;
 import java.util.Objects;
+
+import next.firenext.NextDatabase;
 
 public class AdminRegistrationActivity extends AppCompatActivity {
 
@@ -93,6 +93,7 @@ public class AdminRegistrationActivity extends AppCompatActivity {
                                                     public void onComplete(@NonNull Task<Void> task) {
                                                         if (task.isSuccessful())
                                                         {
+                                                            NextDatabase.add(getApplicationContext(),"user>condition:owner");
                                                             Intent intent = new Intent(AdminRegistrationActivity.this, AdminHomeActivity.class);
                                                             startActivity(intent);
                                                             finish();

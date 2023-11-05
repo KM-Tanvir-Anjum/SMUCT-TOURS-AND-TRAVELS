@@ -16,11 +16,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -33,6 +39,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Objects;
 
 public class TicketActivity extends AppCompatActivity {
 
@@ -46,18 +54,26 @@ public class TicketActivity extends AppCompatActivity {
     public int seat;
     int seatPrice = 250;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference userRef;
 
     //----------- for ticket pdf ----------//
     LinearLayout ticketLayout, downloadLayout;
-    TextView from,to,date,time,contact,seatName,price;
+    TextView from,to,date,time,contact,seatName,price, name, company;
+    EditText passengerName, passengerContact;
     Button ticketDownloadBtn;
     String finalSeatName;
+
+    FirebaseAuth mAuth;
+    FirebaseUser currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ticket);
         //Intent intent = getIntent();
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
+
         fromTo = getIntent().getStringExtra("fromTo");
         DateTime = getIntent().getStringExtra("DateTime");
         comapanyName = getIntent().getStringExtra("companyName");
@@ -71,6 +87,8 @@ public class TicketActivity extends AppCompatActivity {
         seatAndAmount = findViewById(R.id.seat_and_amount);
         purchase = findViewById(R.id.purchase);
         backBtn = findViewById(R.id.back_btn);
+        company = findViewById(R.id.name_of_company);
+        company.setText(comapanyName);
 
 
         //-------------- for generate ticket -------------//
@@ -82,6 +100,9 @@ public class TicketActivity extends AppCompatActivity {
         date = findViewById(R.id.date_t);
         time = findViewById(R.id.time_t);
         contact = findViewById(R.id.contact_t);
+        name = findViewById(R.id.passenger_name);
+        passengerName = findViewById(R.id.passenger_name_write);
+        passengerContact = findViewById(R.id.passenger_contact_write);
         seatName = findViewById(R.id.seat_t);
         price = findViewById(R.id.price_t);
         ticketDownloadBtn = findViewById(R.id.download_btn);
@@ -193,10 +214,46 @@ public class TicketActivity extends AppCompatActivity {
                 if (checkPurchase(A1,A2,A3,A4, ticketRef) == 0)
                 {
                     seat = 0;
-                    purchaseLayout.setVisibility(View.GONE);
-                    amountLayout.setVisibility(View.GONE);
-                    ticketLayout.setVisibility(View.GONE);
-                    downloadLayout.setVisibility(View.VISIBLE);
+                    if (currentUser != null)
+                    {
+                        String currentUser2 = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
+                        userRef = FirebaseDatabase.getInstance().getReference().child("Customer");
+                        userRef.child(currentUser2).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot)
+                            {
+                                if (snapshot.exists())
+                                {
+                                    name.setText(Objects.requireNonNull(snapshot.child("name").getValue()).toString());
+                                    contact.setText(Objects.requireNonNull(snapshot.child("phone").getValue()).toString());
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
+                        purchaseLayout.setVisibility(View.GONE);
+                        amountLayout.setVisibility(View.GONE);
+                        ticketLayout.setVisibility(View.GONE);
+                        downloadLayout.setVisibility(View.VISIBLE);
+                    }
+                    else
+                    {
+                        name.setVisibility(View.GONE);
+                        contact.setVisibility(View.GONE);
+
+                        passengerName.setVisibility(View.VISIBLE);
+                        passengerContact.setVisibility(View.VISIBLE);
+
+                        purchaseLayout.setVisibility(View.GONE);
+                        amountLayout.setVisibility(View.GONE);
+                        ticketLayout.setVisibility(View.GONE);
+                        downloadLayout.setVisibility(View.VISIBLE);
+                    }
+
                 }
 
             }
@@ -213,12 +270,56 @@ public class TicketActivity extends AppCompatActivity {
 
 
         ticketDownloadBtn.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
-                ticketDownloadBtn.setText("Thank You");
-                convertXmlToPdf();
-                downloadLayout.setVisibility(View.GONE);
-                ticketLayout.setVisibility(View.VISIBLE);
+                if (currentUser != null)
+                {
+                    ticketDownloadBtn.setText("Thank You");
+
+
+                    HashMap<String, Object> map = new HashMap<String, Object>();
+                    map.put("Name", name.getText().toString());
+                    map.put("From", from.getText().toString());
+                    map.put("To", to.getText().toString());
+                    map.put("Date", date.getText().toString());
+                    map.put("Time", time.getText().toString());
+                    map.put("BusName", comapanyName);
+                    map.put("Phone", contact.getText().toString());
+                    map.put("Seat", finalSeatName);
+                    map.put("Price", seatPrice);
+                    String push = from.getText().toString()+to.getText().toString()+finalSeatName;
+
+                    userRef = FirebaseDatabase.getInstance().getReference().child("Customer");
+                    userRef.child(currentUser.getUid()).child("MyTicket").child(push).updateChildren(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful())
+                            {
+                                downloadLayout.setVisibility(View.GONE);
+                                ticketLayout.setVisibility(View.VISIBLE);
+                                Toast.makeText(TicketActivity.this, "Your ticket save to your account", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                    userRef.child(currentUser.getUid()).child("MyTicketID").child(push).setValue(push);
+
+                    convertXmlToPdf();
+
+                }
+                else
+                {
+                    if (!passengerName.getText().toString().equals("") && !passengerContact.getText().toString().equals(""))
+                    {
+                        ticketDownloadBtn.setText("Thank You");
+                        convertXmlToPdf();
+                        downloadLayout.setVisibility(View.GONE);
+                        ticketLayout.setVisibility(View.VISIBLE);
+                    }
+                }
+                passengerName.setHint("Write Your Name");
+                passengerContact.setHint("Write Your Phone Number");
+                ticketDownloadBtn.setText("Download Ticket");
             }
         });
 
@@ -434,7 +535,7 @@ public class TicketActivity extends AppCompatActivity {
             document.close();
             fos.close();
             // PDF conversion successful
-            //Toast.makeText(this, "XML to PDF Conversion Successful", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Download Successful", Toast.LENGTH_LONG).show();
         } catch (IOException e) {
             e.printStackTrace();
             // Error occurred while converting to PDF

@@ -9,18 +9,22 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.tanvir.tt.R;
+import com.tanvir.tt.activity.ForgotPasswordActivity;
+
+import next.firenext.NextDatabase;
 
 public class SignInActivity extends AppCompatActivity {
 
     EditText email, password;
 
+    TextView forgotPassword;
     ImageView backBtn;
     Button user_signup, signIn;
     FirebaseAuth mAuth;
@@ -35,6 +39,7 @@ public class SignInActivity extends AppCompatActivity {
         email = findViewById(R.id.sign_in_email);
         password = findViewById(R.id.sign_in_password);
         signIn = findViewById(R.id.sign_in_btn);
+        forgotPassword = findViewById(R.id.sign_in_forgotPassword);
 
 
         signIn.setOnClickListener(new View.OnClickListener() {
@@ -48,7 +53,8 @@ public class SignInActivity extends AppCompatActivity {
                         {
                             if (task.isSuccessful())
                             {
-                                Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
+                                NextDatabase.add(getApplicationContext(),"user>condition:customer");
+                                Intent intent = new Intent(SignInActivity.this, HomeCategoryActivity.class);
                                 intent.putExtra("guest","false");
                                 startActivity(intent);
                                 finish();
@@ -56,6 +62,14 @@ public class SignInActivity extends AppCompatActivity {
                         }
                     });
                 }
+            }
+        });
+
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SignInActivity.this, ForgotPasswordActivity.class);
+                startActivity(intent);
             }
         });
 

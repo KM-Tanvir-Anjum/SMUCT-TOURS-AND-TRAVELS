@@ -46,4 +46,6 @@ dependencies {
 
     implementation 'com.squareup.picasso:picasso:2.71828' // Use the latest version
 
+    implementation 'com.github.almoaz:FireNext:1.2.0'
+
 }

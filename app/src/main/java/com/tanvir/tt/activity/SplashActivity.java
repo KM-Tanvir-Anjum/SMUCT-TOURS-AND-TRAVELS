@@ -11,10 +11,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.tanvir.tt.R;
 import com.tanvir.tt.admin.AdminHomeActivity;
-import com.tanvir.tt.user.HomeActivity;
-import com.tanvir.tt.user.SignInActivity;
+import com.tanvir.tt.user.HomeCategoryActivity;
+import com.tanvir.tt.user.SeclectionTicketActivity;
 
-import java.util.Objects;
+import next.firenext.NextDatabase;
 
 @SuppressLint("CustomSplashScreen")
 public class SplashActivity extends AppCompatActivity {
@@ -36,9 +36,21 @@ public class SplashActivity extends AppCompatActivity {
 
                 if (currentUser != null)
                 {
-                    Intent intent = new Intent(SplashActivity.this, AdminHomeActivity.class);
-                    startActivity(intent);
-                    finish();
+                    String condition = NextDatabase.read(getApplicationContext(),"user>condition:");
+                    if (condition.equals("owner"))
+                    {
+                        Intent intent = new Intent(SplashActivity.this, AdminHomeActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                    else
+                    {
+                        Intent intent = new Intent(SplashActivity.this, HomeCategoryActivity.class);
+                        intent.putExtra("guest","false");
+                        startActivity(intent);
+                        finish();
+                    }
+
 
                 }
                 else

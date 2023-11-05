@@ -33,6 +33,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
+import next.firenext.NextDatabase;
+
 public class AdminHomeActivity extends AppCompatActivity {
 
 
@@ -224,6 +226,7 @@ public class AdminHomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mAuth.signOut();
+                NextDatabase.delete(getApplicationContext(),"user:");
                 Intent intent = new Intent(AdminHomeActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();

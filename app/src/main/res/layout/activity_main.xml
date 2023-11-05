@@ -8,11 +8,24 @@
     tools:context=".activity.MainActivity"
     android:padding="16dp">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:text="Welcome to Tour and Travel"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_centerInParent="true">
+
 
         <Button
             android:id="@+id/admin_login"

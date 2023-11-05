@@ -14,13 +14,14 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.tanvir.tt.R;
 
 import java.util.HashMap;
 import java.util.Objects;
+
+import next.firenext.NextDatabase;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -74,7 +75,8 @@ public class SignUpActivity extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful())
                                         {
-                                            Intent intent = new Intent(SignUpActivity.this, HomeActivity.class);
+                                            NextDatabase.add(getApplicationContext(),"user>condition:customer");
+                                            Intent intent = new Intent(SignUpActivity.this, SeclectionTicketActivity.class);
                                             intent.putExtra("guest","false");
                                             startActivity(intent);
                                             finish();

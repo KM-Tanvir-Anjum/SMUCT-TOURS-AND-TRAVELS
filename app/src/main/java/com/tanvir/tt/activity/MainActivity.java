@@ -6,11 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.tanvir.tt.R;
 import com.tanvir.tt.admin.AdminLogInActivity;
-import com.tanvir.tt.user.HomeActivity;
+import com.tanvir.tt.user.SeclectionTicketActivity;
 import com.tanvir.tt.user.SignInActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -46,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         guestVisitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                Intent intent = new Intent(MainActivity.this, SeclectionTicketActivity.class);
                 intent.putExtra("guest","true");
                 startActivity(intent);
             }

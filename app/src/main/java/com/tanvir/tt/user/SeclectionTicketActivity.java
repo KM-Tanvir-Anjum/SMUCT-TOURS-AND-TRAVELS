@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,7 +16,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,41 +23,36 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 import com.tanvir.tt.R;
-import com.tanvir.tt.activity.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class HomeActivity extends AppCompatActivity {
+public class SeclectionTicketActivity extends AppCompatActivity {
 
     LinearLayout userLayout, guestLayout;
-    TextView name, email, phone, forLogIn, logOutBtn;
+    TextView forLogIn;
     ImageView notice;
-    private String currentUser, guest = "false";
-    FirebaseAuth mAuth;
-    DatabaseReference userReference, noticeReff;
+    private String guest = "false";
+
+    DatabaseReference noticeReff;
 
 
     // -------------- For User --------------- //
     Spinner dateSpinner, timeSpinner, fromSpinner, toSpinner, companyNameSpinner;
     Button nextBtn;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
+    ImageView backBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_selection_ticket);
+
 
         guest = getIntent().getStringExtra("guest");
 
 
-
-        userLayout = findViewById(R.id.profile_layout);
-        name = findViewById(R.id.profile_name);
-        email = findViewById(R.id.profile_email);
-        phone = findViewById(R.id.profile_number);
-        logOutBtn = findViewById(R.id.log_out_btn);
         notice = findViewById(R.id.notice_board);
 
 
@@ -68,55 +61,23 @@ public class HomeActivity extends AppCompatActivity {
         forLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HomeActivity.this, SignInActivity.class);
+                Intent intent = new Intent(SeclectionTicketActivity.this, SignInActivity.class);
                 startActivity(intent);
                 finish();
             }
         });
 
-        if (currentUser == null)
-        {
-            userLayout.setVisibility(View.GONE);
-            guestLayout.setVisibility(View.VISIBLE);
-            logOutBtn.setVisibility(View.GONE);
-        }
         if (guest.equals("false"))
         {
-            userLayout.setVisibility(View.VISIBLE);
             guestLayout.setVisibility(View.GONE);
-            logOutBtn.setVisibility(View.VISIBLE);
-
-            mAuth = FirebaseAuth.getInstance();
-            currentUser = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
-            userReference = FirebaseDatabase.getInstance().getReference().child("Customer");
-            userReference.child(currentUser).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                    if (snapshot.exists())
-                    {
-                        name.setText(snapshot.child("name").getValue().toString());
-                        email.setText(snapshot.child("email").getValue().toString());
-                        phone.setText(snapshot.child("phone").getValue().toString());
-                    }
-
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
         }
-        logOutBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mAuth.signOut();
-                Intent intent = new Intent(HomeActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+        else
+        {
+            guestLayout.setVisibility(View.VISIBLE);
+        }
+
+
+
 
         // --------------- for spinner ----------------//
         dateSpinner = findViewById(R.id.schedule_date);
@@ -125,6 +86,7 @@ public class HomeActivity extends AppCompatActivity {
         toSpinner = findViewById(R.id.to_spinner);
         companyNameSpinner = findViewById(R.id.company_name);
         nextBtn = findViewById(R.id.nextBtn);
+        backBtn = findViewById(R.id.selection_ticket_backBtn);
 
         fromSpinnerData(fromSpinner);
 
@@ -192,7 +154,7 @@ public class HomeActivity extends AppCompatActivity {
                if (fromSpinner.getSelectedItem().toString() != "Select" && toSpinner.getSelectedItem().toString() != "Select"
                         && dateSpinner.getSelectedItem().toString() != "Select" && timeSpinner.getSelectedItem().toString() != "Select") {
 
-                   Intent intent = new Intent(HomeActivity.this, TicketActivity.class);
+                   Intent intent = new Intent(SeclectionTicketActivity.this, TicketActivity.class);
                    intent.putExtra("fromTo", fromSpinner.getSelectedItem().toString() + toSpinner.getSelectedItem().toString());
                    intent.putExtra("DateTime", dateSpinner.getSelectedItem().toString() + timeSpinner.getSelectedItem().toString());
                    intent.putExtra("companyName", companyNameSpinner.getSelectedItem().toString());
@@ -224,6 +186,13 @@ public class HomeActivity extends AppCompatActivity {
 
             }
         });
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
 
 
@@ -241,7 +210,7 @@ public class HomeActivity extends AppCompatActivity {
                 }
 
                 // Create an ArrayAdapter using the data list
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(HomeActivity.this, android.R.layout.simple_spinner_item, data);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(SeclectionTicketActivity.this, android.R.layout.simple_spinner_item, data);
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
                 // Set the adapter to the Spinner
@@ -272,7 +241,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
                     // Create an ArrayAdapter using the data list
-                    ArrayAdapter<String> adapter = new ArrayAdapter<>(HomeActivity.this, android.R.layout.simple_spinner_item, data);
+                    ArrayAdapter<String> adapter = new ArrayAdapter<>(SeclectionTicketActivity.this, android.R.layout.simple_spinner_item, data);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
                     // Set the adapter to the Spinner
@@ -306,7 +275,7 @@ public class HomeActivity extends AppCompatActivity {
                     }
 
                     // Create an ArrayAdapter using the data list
-                    ArrayAdapter<String> adapter = new ArrayAdapter<>(HomeActivity.this, android.R.layout.simple_spinner_item, data);
+                    ArrayAdapter<String> adapter = new ArrayAdapter<>(SeclectionTicketActivity.this, android.R.layout.simple_spinner_item, data);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
                     // Set the adapter to the Spinner
@@ -338,7 +307,7 @@ public class HomeActivity extends AppCompatActivity {
                     }
 
                     // Create an ArrayAdapter using the data list
-                    ArrayAdapter<String> adapter = new ArrayAdapter<>(HomeActivity.this, android.R.layout.simple_spinner_item, data);
+                    ArrayAdapter<String> adapter = new ArrayAdapter<>(SeclectionTicketActivity.this, android.R.layout.simple_spinner_item, data);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
                     // Set the adapter to the Spinner
@@ -372,7 +341,7 @@ public class HomeActivity extends AppCompatActivity {
                     }
 
                     // Create an ArrayAdapter using the data list
-                    ArrayAdapter<String> adapter = new ArrayAdapter<>(HomeActivity.this, android.R.layout.simple_spinner_item, data);
+                    ArrayAdapter<String> adapter = new ArrayAdapter<>(SeclectionTicketActivity.this, android.R.layout.simple_spinner_item, data);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
                     // Set the adapter to the Spinner
