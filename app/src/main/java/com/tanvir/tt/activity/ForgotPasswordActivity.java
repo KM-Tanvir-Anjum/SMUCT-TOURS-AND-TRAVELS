@@ -70,7 +70,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()){
 
-
+                            Toast.makeText(ForgotPasswordActivity.this,"Please Check Your Email Box", Toast.LENGTH_SHORT).show();
                             onBackPressed();
                         }
                         else
