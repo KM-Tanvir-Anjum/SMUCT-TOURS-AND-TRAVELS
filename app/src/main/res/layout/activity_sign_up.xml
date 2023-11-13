@@ -27,42 +27,42 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:orientation="vertical"
-        android:padding="16dp"
-        android:layout_centerInParent="true">
+        android:padding="16dp">
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:minWidth="3dp">
+            android:minWidth="3dp"
+            android:orientation="horizontal">
 
             <EditText
                 android:id="@+id/first_name"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_gravity="start"
-                android:hint="First Name"
+                android:layout_marginEnd="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/bg_edit_text"
+                android:hint="First Name"
                 android:paddingStart="10dp"
+                android:textColor="@color/black"
                 android:textColorHint="#70000000"
                 android:textCursorDrawable="@color/bg_color"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:layout_marginEnd="5dp" />
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/last_name"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_gravity="right"
+                android:layout_marginStart="5dp"
+                android:layout_weight="1"
                 android:background="@drawable/bg_edit_text"
                 android:hint="Last Name"
-                android:layout_weight="1"
                 android:paddingStart="10dp"
-                android:layout_marginStart="5dp"
                 android:textColor="@color/black"
                 android:textColorHint="#70000000"
                 android:textCursorDrawable="@color/bg_color"
@@ -75,26 +75,26 @@
             android:id="@+id/sign_up_email"
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_edit_text"
             android:hint="Email"
             android:paddingStart="10dp"
+            android:textColor="@color/black"
             android:textColorHint="#70000000"
             android:textCursorDrawable="@color/bg_color"
-            android:background="@drawable/bg_edit_text"
-            android:layout_marginTop="16dp"
-            android:textColor="@color/black"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/sign_up_phone_number"
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_edit_text"
             android:hint="Phone Number"
             android:paddingStart="10dp"
+            android:textColor="@color/black"
             android:textColorHint="#70000000"
             android:textCursorDrawable="@color/bg_color"
-            android:background="@drawable/bg_edit_text"
-            android:layout_marginTop="16dp"
-            android:textColor="@color/black"
             android:textSize="16sp" />
 
 
@@ -102,39 +102,38 @@
             android:id="@+id/sign_up_password"
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_edit_text"
             android:hint="Password"
             android:paddingStart="10dp"
+            android:textColor="@color/black"
             android:textColorHint="#70000000"
             android:textCursorDrawable="@color/bg_color"
-            android:background="@drawable/bg_edit_text"
-            android:layout_marginTop="16dp"
-            android:textColor="@color/black"
             android:textSize="16sp" />
 
         <EditText
             android:id="@+id/sign_up_confirm_password"
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_edit_text"
             android:hint="Confirm Password"
             android:paddingStart="10dp"
+            android:textColor="@color/black"
             android:textColorHint="#70000000"
             android:textCursorDrawable="@color/bg_color"
-            android:background="@drawable/bg_edit_text"
-            android:layout_marginTop="16dp"
-            android:textColor="@color/black"
             android:textSize="16sp" />
 
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
             android:text="By clicking Create account, you agree to our
 terms and conditions "
-            android:gravity="center"
-            android:layout_marginTop="40dp"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            />
+            android:textSize="16sp" />
 
 
         <Button
@@ -142,13 +141,13 @@ terms and conditions "
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_gravity="center"
-            android:text="Create Account"
             android:layout_marginTop="22dp"
             android:background="@drawable/bg_btn"
-            android:textColor="@color/white"
             android:gravity="center"
+            android:text="Create Account"
+            android:textColor="@color/white"
             android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
     </LinearLayout>
 

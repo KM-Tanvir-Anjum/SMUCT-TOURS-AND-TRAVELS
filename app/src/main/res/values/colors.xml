@@ -5,4 +5,5 @@
     <color name="colorPrimary">#B19C9C</color>
     <color name="bg_color">#46A381</color>
     <color name="primary">#46A381</color>
+    <color name="admin_bg">#770af5</color>
 </resources>
