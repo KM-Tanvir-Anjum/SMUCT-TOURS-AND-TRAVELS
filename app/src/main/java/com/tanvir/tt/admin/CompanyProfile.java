@@ -45,7 +45,7 @@ public class CompanyProfile extends AppCompatActivity {
         backBtn = findViewById(R.id.company_profile_backBtn);
 
 
-        databaseReference.child(currentUser).addValueEventListener(new ValueEventListener() {
+        databaseReference.child(currentUser).child("Company").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot)
             {

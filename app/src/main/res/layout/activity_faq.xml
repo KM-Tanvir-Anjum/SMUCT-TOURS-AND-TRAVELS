@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".activity_faq">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_box"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:padding="12dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/bg_color"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                android:text="Frequently ask Questions"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:text="1.How can I book a bus ticket using the app?"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="2dp"
+                android:text="Ans: To book a bus ticket, simply open the app, select your departure and destination points, choose the preferred date and time, and follow the on-screen instructions to complete the booking."
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="2dp"
+                android:textStyle="bold"
+                android:text="2. Can I get a refund if my bus is delayed or canceled?"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="2dp"
+                android:text="Ans: Refund policies vary based on the bus company. If your bus is significantly delayed or canceled, refer to the terms and conditions or contact customer support for information on refunds."
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="2dp"
+                android:textStyle="bold"
+                android:text="3. How do I retrieve my booked ticket?"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="2dp"
+                android:text="Ans: After completing the booking, your ticket details You can also find your booked tickets in the 'My Ticket' section of the app."
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="2dp"
+                android:textStyle="bold"
+                android:text="4.What should I do if I encounter issues during the booking process?"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="2dp"
+                android:text="Ans: If you face any issues while booking, check your internet connection and try again. If the problem persists, contact our customer support for assistance."
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="2dp"
+                android:textStyle="bold"
+                android:text="5.Can I cancel or modify my bus ticket reservation?"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="2dp"
+                android:text="Ans: No, you cann't cancel or modify your reservation depending on the bus company's policies. "
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="2dp"
+                android:textStyle="bold"
+                android:text="6.What documents do I need to show when boarding the bus?"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="2dp"
+                android:text="Ans: Generally, you need to show the printed copy of your ticket. "
+                android:textSize="14sp"/>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

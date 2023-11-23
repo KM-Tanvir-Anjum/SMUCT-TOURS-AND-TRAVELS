@@ -67,7 +67,7 @@ public class AdminRegistrationActivity extends AppCompatActivity {
                         if (snapshot.exists())
                         {
                             String key1 = Objects.requireNonNull(snapshot.child("key1").getValue()).toString();
-
+   //extracting a value associated with the "key1" node from a data snapshot, ensuring it's not null, and storing it as a string in the variable key1.
                             if (authorizesKey.getText().toString().equals(key1))
                             {
                                 authReference.child("key").child("key1").setValue("set_key");

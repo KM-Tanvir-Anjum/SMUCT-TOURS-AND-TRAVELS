@@ -26,6 +26,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.tanvir.tt.R;
 import com.tanvir.tt.activity.MainActivity;
+import com.tanvir.tt.activity_faq;
+import com.tanvir.tt.user.HomeCategoryActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,7 +44,7 @@ public class AdminHomeActivity extends AppCompatActivity {
     LinearLayout  ownerHomeLayout, newTicketUploadLayout, deleteTicketlayout;
     Button  uploadBtn;
     EditText  ticketPrice, coachNo;
-    TextView uploadNewTicketBtn, DeleteTicketBtn, logOutBtn, companyProfile;
+    TextView uploadNewTicketBtn, DeleteTicketBtn, logOutBtn, companyProfile,termsAndConditions;
     ImageView newTicketUploadLayoutBackBtn;
     Spinner newFrom, newTo, newDay, newMonth, newYear, newHour, newMinute, newAmPm;
 
@@ -92,6 +94,15 @@ public class AdminHomeActivity extends AppCompatActivity {
         logOutBtn = findViewById(R.id.logoutBtn);
 
         companyProfile = findViewById(R.id.company_profile);
+        termsAndConditions=findViewById(R.id.admin_terms_and_conditions);
+
+        termsAndConditions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AdminHomeActivity.this, activity_admin_terms_and_condition.class);
+                startActivity(intent);
+            }
+        });
 
 
         databaseReference.child(currentUser).addValueEventListener(new ValueEventListener() {
@@ -111,6 +122,7 @@ public class AdminHomeActivity extends AppCompatActivity {
 
             }
         });
+
 
 
 
@@ -261,6 +273,9 @@ public class AdminHomeActivity extends AppCompatActivity {
         scheduleRef.child(newFrom.getSelectedItem().toString()+newTo.getSelectedItem().toString()+date).child(time).setValue(time);
 
         scheduleRef.child(newFrom.getSelectedItem().toString()+newTo.getSelectedItem().toString()+date+time).child(companyName).setValue(companyName);
+
+        scheduleRef.child(newFrom.getSelectedItem().toString() + newTo.getSelectedItem().toString() + date + time)
+                .child("companyName").setValue(companyName);
 
         DatabaseReference ticketRef = database.getReference("Bus Ticket");
 

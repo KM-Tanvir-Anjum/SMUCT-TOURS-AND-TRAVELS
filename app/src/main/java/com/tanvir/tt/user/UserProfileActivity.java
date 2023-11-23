@@ -50,15 +50,37 @@ public class UserProfileActivity extends AppCompatActivity {
         logOut = findViewById(R.id.user_profile_logout);
 
 
+//        databaseReference.child(currentUser).addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot)
+//            {
+//                if (snapshot.exists())
+//                {
+//                    Name.setText(Objects.requireNonNull(snapshot.child("name").getValue()).toString());
+//                    email.setText(Objects.requireNonNull(snapshot.child("email").getValue()).toString());
+//                    phoneNumber.setText(Objects.requireNonNull(snapshot.child("phone").getValue()).toString());
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+
         databaseReference.child(currentUser).addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot)
-            {
-                if (snapshot.exists())
-                {
-                    Name.setText(Objects.requireNonNull(snapshot.child("name").getValue()).toString());
-                    email.setText(Objects.requireNonNull(snapshot.child("email").getValue()).toString());
-                    phoneNumber.setText(Objects.requireNonNull(snapshot.child("phone").getValue()).toString());
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    if (snapshot.child("name").exists()) {
+                        Name.setText(Objects.requireNonNull(snapshot.child("name").getValue()).toString());
+                    }
+                    if (snapshot.child("email").exists()) {
+                        email.setText(Objects.requireNonNull(snapshot.child("email").getValue()).toString());
+                    }
+                    if (snapshot.child("phone").exists()) {
+                        phoneNumber.setText(Objects.requireNonNull(snapshot.child("phone").getValue()).toString());
+                    }
                 }
             }
 

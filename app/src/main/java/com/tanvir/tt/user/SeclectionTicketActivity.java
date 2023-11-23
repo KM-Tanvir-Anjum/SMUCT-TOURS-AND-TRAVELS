@@ -201,6 +201,8 @@ public class SeclectionTicketActivity extends AppCompatActivity {
         DatabaseReference dateRef = database.getReference("Bus Schedule").child("From");
         dateRef.addValueEventListener(new ValueEventListener() {
             @Override
+            //Inside the onDataChange method, a loop iterates through the children of the snapshot,
+            // extracting String values from each child. These values represent items in the "From" node of the database
             public void onDataChange(DataSnapshot dataSnapshot) {
                 List<String> data = new ArrayList<>();
                 data.add("Select");

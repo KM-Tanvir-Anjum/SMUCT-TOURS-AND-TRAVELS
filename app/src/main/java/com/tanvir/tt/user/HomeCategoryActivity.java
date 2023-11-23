@@ -8,10 +8,11 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.tanvir.tt.R;
+import com.tanvir.tt.activity_faq;
 
 public class HomeCategoryActivity extends AppCompatActivity {
 
-    TextView profile, buyTicket, myTicket;
+    TextView profile, buyTicket, myTicket,faq;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +22,7 @@ public class HomeCategoryActivity extends AppCompatActivity {
         profile = findViewById(R.id.profile);
         buyTicket = findViewById(R.id.buy_ticket);
         myTicket = findViewById(R.id.my_ticket);
+        faq=findViewById(R.id.faq);
 
 
         profile.setOnClickListener(new View.OnClickListener() {
@@ -42,6 +44,14 @@ public class HomeCategoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HomeCategoryActivity.this, MyTicketActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        faq.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeCategoryActivity.this, activity_faq.class);
                 startActivity(intent);
             }
         });

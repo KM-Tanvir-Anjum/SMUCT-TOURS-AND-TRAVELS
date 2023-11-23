@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".admin.activity_admin_terms_and_condition">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_box"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:padding="12dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/bg_color"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                android:text="Terms And Conditions"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:text="1. Acceptance of Terms"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="2dp"
+                android:text="By accessing or using this bus ticket booking application, you agree to comply with and be bound by the following terms and conditions. If you do not agree to these terms, please do not use the App."
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="2dp"
+                android:textStyle="bold"
+                android:text="2. Booking Policies"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="2dp"
+                android:text=" * All bookings made through the App are subject to seat availability and the terms and conditions set by the respective bus operators.\n
+* The App facilitates reservations but does not guarantee seat availability.\n
+* The bus company reserves the right to change schedules, cancel trips, or modify seat assignments as necessary."
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="2dp"
+                android:textStyle="bold"
+                android:text="3. Payment and Refund Policies"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="2dp"
+                android:text="* Payments made through the App are securely processed. Users are responsible for providing accurate payment information.\n
+* Refund policies vary by bus operator. Users should review the refund policy of the specific bus operator before making a booking.\n
+* Refunds may be subject to processing fees and the policies of the bus operator."
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="2dp"
+                android:textStyle="bold"
+                android:text="4. Seat Selection"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="2dp"
+                android:text="* Seat selection is subject to availability and the policies of the bus operator.\n
+* The App allows users to choose their seats during the booking process, but the final assignment is at the discretion of the bus operator."
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="2dp"
+                android:textStyle="bold"
+                android:text="5. Privacy Policy"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="2dp"
+                android:text="The App collects and processes user data in accordance with the Privacy Policy. Users should review the Privacy Policy for details on data handling and protection. "
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="2dp"
+                android:textStyle="bold"
+                android:text="6. Limitation of Liability"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="2dp"
+                android:text="The App and the bus company are not liable for any direct, indirect, incidental, or consequential damages arising from the use of the App or bus services. "
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="2dp"
+                android:textStyle="bold"
+                android:text="7. Changes to Terms &amp; Conditions"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="2dp"
+                android:text="The bus company reserves the right to modify or update these terms and conditions at any time. Users will be notified of any changes through the App. "
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="2dp"
+                android:textStyle="bold"
+                android:text="8.Governing Law"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="2dp"
+                android:text="These terms and conditions are governed by and construed in accordance with the laws of Bangladesh."
+                android:textSize="14sp"/>
+
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>
