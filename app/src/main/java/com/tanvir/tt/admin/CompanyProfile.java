@@ -37,7 +37,7 @@ public class CompanyProfile extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         currentUser = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("All Company").child("Company");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("All Company");
 
         companyName = findViewById(R.id.company_name);
         email = findViewById(R.id.company_email);
@@ -45,15 +45,19 @@ public class CompanyProfile extends AppCompatActivity {
         backBtn = findViewById(R.id.company_profile_backBtn);
 
 
-        databaseReference.child(currentUser).child("Company").addValueEventListener(new ValueEventListener() {
+        databaseReference.child(currentUser).addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot)
-            {
-                if (snapshot.exists())
-                {
-                    companyName.setText(Objects.requireNonNull(snapshot.child("company").getValue()).toString());
-                    email.setText(Objects.requireNonNull(snapshot.child("email").getValue()).toString());
-                    phoneNumber.setText(Objects.requireNonNull(snapshot.child("phone").getValue()).toString());
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    if (snapshot.child("company").exists()) {
+                        companyName.setText(Objects.requireNonNull(snapshot.child("company").getValue()).toString());
+                    }
+                    if (snapshot.child("email").exists()) {
+                        email.setText(Objects.requireNonNull(snapshot.child("email").getValue()).toString());
+                    }
+                    if (snapshot.child("phone").exists()) {
+                        phoneNumber.setText(Objects.requireNonNull(snapshot.child("phone").getValue()).toString());
+                    }
                 }
             }
 
@@ -62,6 +66,24 @@ public class CompanyProfile extends AppCompatActivity {
 
             }
         });
+//
+//    child("All Company").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot)
+//            {
+//                if (snapshot.exists())
+//                {
+//                    companyName.setText(Objects.requireNonNull(snapshot.child("company").getValue()).toString());
+//                    email.setText(Objects.requireNonNull(snapshot.child("email").getValue()).toString());
+//                    phoneNumber.setText(Objects.requireNonNull(snapshot.child("phone").getValue()).toString());
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override

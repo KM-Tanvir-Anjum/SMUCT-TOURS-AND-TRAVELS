@@ -43,7 +43,7 @@ public class AdminRegistrationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_admin_registration);
 
         mAuth = FirebaseAuth.getInstance();
-        userReference = FirebaseDatabase.getInstance().getReference().child("All Company").child("Company");
+        userReference = FirebaseDatabase.getInstance().getReference().child("All Company");//.child("Company");
         authReference = FirebaseDatabase.getInstance().getReference().child("VerifiedKey");
 
 
