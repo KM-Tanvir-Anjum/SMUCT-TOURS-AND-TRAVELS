@@ -152,7 +152,8 @@ public class SeclectionTicketActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                if (fromSpinner.getSelectedItem().toString() != "Select" && toSpinner.getSelectedItem().toString() != "Select"
-                        && dateSpinner.getSelectedItem().toString() != "Select" && timeSpinner.getSelectedItem().toString() != "Select") {
+                        && dateSpinner.getSelectedItem().toString() != "Select" && timeSpinner.getSelectedItem().toString() != "Select"
+                       && companyNameSpinner.getSelectedItem().toString() != "Select") {
 
                    Intent intent = new Intent(SeclectionTicketActivity.this, TicketActivity.class);
                    intent.putExtra("fromTo", fromSpinner.getSelectedItem().toString() + toSpinner.getSelectedItem().toString());

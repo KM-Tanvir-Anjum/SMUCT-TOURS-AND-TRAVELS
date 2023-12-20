@@ -65,7 +65,7 @@ public class AdminHomeActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         currentUser = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("All Company").child("Company");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("All Company");//.child("Company");
 
         ownerHomeLayout = findViewById(R.id.owner_home_layout);
         newTicketUploadLayout = findViewById(R.id.new_ticket_upload_Layout);
@@ -274,8 +274,7 @@ public class AdminHomeActivity extends AppCompatActivity {
 
         scheduleRef.child(newFrom.getSelectedItem().toString()+newTo.getSelectedItem().toString()+date+time).child(companyName).setValue(companyName);
 
-        scheduleRef.child(newFrom.getSelectedItem().toString() + newTo.getSelectedItem().toString() + date + time)
-                .child("companyName").setValue(companyName);
+//        scheduleRef.child(newFrom.getSelectedItem().toString() + newTo.getSelectedItem().toString() + date + time).child("companyName").setValue(companyName);
 
         DatabaseReference ticketRef = database.getReference("Bus Ticket");
 

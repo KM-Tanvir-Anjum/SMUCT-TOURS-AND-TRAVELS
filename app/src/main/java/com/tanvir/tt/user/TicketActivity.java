@@ -44,10 +44,10 @@ import java.util.Objects;
 
 public class TicketActivity extends AppCompatActivity {
 
-    LinearLayout a1,a2,a3,a4;
+    LinearLayout a1,a2,a3,a4,b1,b2,b3,b4,c1,c2,c3,c4,d1,d2,d3,d4,e1,e2,e3,e4,f1,f2,f3,f4,g1,g2,g3,g4,g5;
     RelativeLayout amountLayout, purchaseLayout;
     TextView seatAndAmount, purchase;
-    static String A1,A2,A3,A4 = "";
+    static String A1,A2,A3,A4,B1,B2,B3,B4,C1,C2,C3,C4,D1,D2,D3,D4,E1,E2,E3,E4,F1,F2,F3,F4,G1,G2,G3,G4,G5 = "";
     String fromTo, DateTime, comapanyName;
     ImageView backBtn;
 
@@ -116,7 +116,31 @@ public class TicketActivity extends AppCompatActivity {
         a2 = findViewById(R.id.A2);
         a3 = findViewById(R.id.A3);
         a4 = findViewById(R.id.A4);
-
+        b1 = findViewById(R.id.B1);
+        b2 = findViewById(R.id.B2);
+        b3 = findViewById(R.id.B3);
+        b4 = findViewById(R.id.B4);
+        c1 = findViewById(R.id.C1);
+        c2 = findViewById(R.id.C2);
+        c3 = findViewById(R.id.C3);
+        c4 = findViewById(R.id.C4);
+        d1 = findViewById(R.id.D1);
+        d2 = findViewById(R.id.D2);
+        d3 = findViewById(R.id.D3);
+        d4 = findViewById(R.id.D4);
+        e1 = findViewById(R.id.E1);
+        e2 = findViewById(R.id.E2);
+        e3 = findViewById(R.id.E3);
+        e4 = findViewById(R.id.E4);
+        f1 = findViewById(R.id.F1);
+        f2 = findViewById(R.id.F2);
+        f3 = findViewById(R.id.F3);
+        f4 = findViewById(R.id.F4);
+        g1 = findViewById(R.id.G1);
+        g2 = findViewById(R.id.G2);
+        g3 = findViewById(R.id.G3);
+        g4 = findViewById(R.id.G4);
+        g5 = findViewById(R.id.G5);
 
 
         serverLoad(ticketRef);
@@ -211,10 +235,518 @@ public class TicketActivity extends AppCompatActivity {
             }
         });
 
+        b1.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View v) {
+                if (B1.equals("Select"))
+                {
+                    seat = seat-1;
+                    seatAndAmount.setText(seat+" x "+ seatPrice +" = "+ seatPrice*seat);
+                    purchase.setText("Buy "+ seat+ " Seat " + seatPrice*seat + " Taka");
+                    b1.setBackgroundResource(R.drawable.red_chair);
+                    B1 = "";
+                    ForPurchaseLayoutOpen(seat);
+                }
+                else if (!B1.equals("yes"))
+                {
+                    seat = seat+1;
+                    B1 = ForSelect(seat, b1, seatPrice);
+                }
+            }
+        });
+
+        b2.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View v) {
+
+                if (B2.equals("Select"))
+                {
+                    seat = seat-1;
+                    seatAndAmount.setText(seat+" x "+ seatPrice +" = "+ seatPrice*seat);
+                    purchase.setText("Buy "+ seat+ " Seat " + seatPrice*seat + " Taka");
+                    b2.setBackgroundResource(R.drawable.red_chair);
+                    B2 = "";
+                    ForPurchaseLayoutOpen(seat);
+                }
+                else if (!B2.equals("yes"))
+                {
+                    seat = seat+1;
+                    B2 = ForSelect(seat, b2, seatPrice);
+                }
+
+            }
+        });
+
+        b3.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View v) {
+
+                if (B3.equals("Select"))
+                {
+                    seat = seat-1;
+                    seatAndAmount.setText(seat+" x "+ seatPrice +" = "+ seatPrice*seat);
+                    purchase.setText("Buy "+ seat+ " Seat " + seatPrice*seat + " Taka");
+                    b3.setBackgroundResource(R.drawable.red_chair);
+                    B3 = "";
+                    ForPurchaseLayoutOpen(seat);
+                }
+                else if (!B3.equals("yes"))
+                {
+                    seat = seat+1;
+                    B3 = ForSelect(seat, b3, seatPrice);
+                }
+
+            }
+        });
+
+        b4.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View v) {
+
+                if (B4.equals("Select"))
+                {
+                    seat = seat-1;
+                    seatAndAmount.setText(seat+" x "+ seatPrice +" = "+ seatPrice*seat);
+                    purchase.setText("Buy "+ seat+ " Seat " + seatPrice*seat + " Taka");
+                    b4.setBackgroundResource(R.drawable.red_chair);
+                    B4 = "";
+                    ForPurchaseLayoutOpen(seat);
+                }
+                else if (!B4.equals("yes"))
+                {
+                    seat = seat+1;
+                    B4 = ForSelect(seat, b4, seatPrice);
+                }
+
+            }
+        });
+
+
+        c1.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View v) {
+                if (C1.equals("Select"))
+                {
+                    seat = seat-1;
+                    seatAndAmount.setText(seat+" x "+ seatPrice +" = "+ seatPrice*seat);
+                    purchase.setText("Buy "+ seat+ " Seat " + seatPrice*seat + " Taka");
+                    c1.setBackgroundResource(R.drawable.red_chair);
+                    C1 = "";
+                    ForPurchaseLayoutOpen(seat);
+                }
+                else if (!C1.equals("yes"))
+                {
+                    seat = seat+1;
+                    C1 = ForSelect(seat, c1, seatPrice);
+                }
+            }
+        });
+
+        c2.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View v) {
+
+                if (C2.equals("Select"))
+                {
+                    seat = seat-1;
+                    seatAndAmount.setText(seat+" x "+ seatPrice +" = "+ seatPrice*seat);
+                    purchase.setText("Buy "+ seat+ " Seat " + seatPrice*seat + " Taka");
+                    c2.setBackgroundResource(R.drawable.red_chair);
+                    C2 = "";
+                    ForPurchaseLayoutOpen(seat);
+                }
+                else if (!C2.equals("yes"))
+                {
+                    seat = seat+1;
+                    C2 = ForSelect(seat, c2, seatPrice);
+                }
+
+            }
+        });
+
+        c3.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View v) {
+
+                if (C3.equals("Select"))
+                {
+                    seat = seat-1;
+                    seatAndAmount.setText(seat+" x "+ seatPrice +" = "+ seatPrice*seat);
+                    purchase.setText("Buy "+ seat+ " Seat " + seatPrice*seat + " Taka");
+                    c3.setBackgroundResource(R.drawable.red_chair);
+                    C3 = "";
+                    ForPurchaseLayoutOpen(seat);
+                }
+                else if (!C3.equals("yes"))
+                {
+                    seat = seat+1;
+                    C3 = ForSelect(seat, c3, seatPrice);
+                }
+
+            }
+        });
+
+        c4.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View v) {
+
+                if (C4.equals("Select"))
+                {
+                    seat = seat-1;
+                    seatAndAmount.setText(seat+" x "+ seatPrice +" = "+ seatPrice*seat);
+                    purchase.setText("Buy "+ seat+ " Seat " + seatPrice*seat + " Taka");
+                    c4.setBackgroundResource(R.drawable.red_chair);
+                    C4 = "";
+                    ForPurchaseLayoutOpen(seat);
+                }
+                else if (!C4.equals("yes"))
+                {
+                    seat = seat+1;
+                    C4 = ForSelect(seat, c4, seatPrice);
+                }
+
+            }
+        });
+
+
+        d1.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View v) {
+                if (D1.equals("Select"))
+                {
+                    seat = seat-1;
+                    seatAndAmount.setText(seat+" x "+ seatPrice +" = "+ seatPrice*seat);
+                    purchase.setText("Buy "+ seat+ " Seat " + seatPrice*seat + " Taka");
+                    d1.setBackgroundResource(R.drawable.red_chair);
+                    D1 = "";
+                    ForPurchaseLayoutOpen(seat);
+                }
+                else if (!D1.equals("yes"))
+                {
+                    seat = seat+1;
+                    D1 = ForSelect(seat, d1, seatPrice);
+                }
+            }
+        });
+
+        d2.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View v) {
+                if (D2.equals("Select"))
+                {
+                    seat = seat-1;
+                    seatAndAmount.setText(seat+" x "+ seatPrice +" = "+ seatPrice*seat);
+                    purchase.setText("Buy "+ seat+ " Seat " + seatPrice*seat + " Taka");
+                    d2.setBackgroundResource(R.drawable.red_chair);
+                    D2 = "";
+                    ForPurchaseLayoutOpen(seat);
+                }
+                else if (!D2.equals("yes"))
+                {
+                    seat = seat+1;
+                    D2 = ForSelect(seat, d2, seatPrice);
+                }
+            }
+        });
+
+        d3.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View v) {
+                if (D3.equals("Select"))
+                {
+                    seat = seat-1;
+                    seatAndAmount.setText(seat+" x "+ seatPrice +" = "+ seatPrice*seat);
+                    purchase.setText("Buy "+ seat+ " Seat " + seatPrice*seat + " Taka");
+                    d3.setBackgroundResource(R.drawable.red_chair);
+                    D3 = "";
+                    ForPurchaseLayoutOpen(seat);
+                }
+                else if (!D3.equals("yes"))
+                {
+                    seat = seat+1;
+                    D3 = ForSelect(seat, d3, seatPrice);
+                }
+            }
+        });
+
+        d4.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View v) {
+                if (D4.equals("Select"))
+                {
+                    seat = seat-1;
+                    seatAndAmount.setText(seat+" x "+ seatPrice +" = "+ seatPrice*seat);
+                    purchase.setText("Buy "+ seat+ " Seat " + seatPrice*seat + " Taka");
+                    d4.setBackgroundResource(R.drawable.red_chair);
+                    D4 = "";
+                    ForPurchaseLayoutOpen(seat);
+                }
+                else if (!D4.equals("yes"))
+                {
+                    seat = seat+1;
+                    D4 = ForSelect(seat, d4, seatPrice);
+                }
+            }
+        });
+
+
+        e1.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View v) {
+                if (E1.equals("Select")) {
+                    seat = seat - 1;
+                    seatAndAmount.setText(seat + " x " + seatPrice + " = " + seatPrice * seat);
+                    purchase.setText("Buy " + seat + " Seat " + seatPrice * seat + " Taka");
+                    e1.setBackgroundResource(R.drawable.red_chair);
+                    E1 = "";
+                    ForPurchaseLayoutOpen(seat);
+                } else if (!E1.equals("yes")) {
+                    seat = seat + 1;
+                    E1 = ForSelect(seat, e1, seatPrice);
+                }
+            }
+        });
+
+
+        e2.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View v) {
+                if (E2.equals("Select")) {
+                    seat = seat - 1;
+                    seatAndAmount.setText(seat + " x " + seatPrice + " = " + seatPrice * seat);
+                    purchase.setText("Buy " + seat + " Seat " + seatPrice * seat + " Taka");
+                    e2.setBackgroundResource(R.drawable.red_chair);
+                    E2 = "";
+                    ForPurchaseLayoutOpen(seat);
+                } else if (!E2.equals("yes")) {
+                    seat = seat + 1;
+                    E2 = ForSelect(seat, e2, seatPrice);
+                }
+            }
+        });
+
+
+        e3.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View v) {
+                if (E3.equals("Select")) {
+                    seat = seat - 1;
+                    seatAndAmount.setText(seat + " x " + seatPrice + " = " + seatPrice * seat);
+                    purchase.setText("Buy " + seat + " Seat " + seatPrice * seat + " Taka");
+                    e3.setBackgroundResource(R.drawable.red_chair);
+                    E3 = "";
+                    ForPurchaseLayoutOpen(seat);
+                } else if (!E3.equals("yes")) {
+                    seat = seat + 1;
+                    E3 = ForSelect(seat, e3, seatPrice);
+                }
+            }
+        });
+
+
+        e4.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View v) {
+                if (E4.equals("Select")) {
+                    seat = seat - 1;
+                    seatAndAmount.setText(seat + " x " + seatPrice + " = " + seatPrice * seat);
+                    purchase.setText("Buy " + seat + " Seat " + seatPrice * seat + " Taka");
+                    e4.setBackgroundResource(R.drawable.red_chair);
+                    E4 = "";
+                    ForPurchaseLayoutOpen(seat);
+                } else if (!E4.equals("yes")) {
+                    seat = seat + 1;
+                    E4 = ForSelect(seat, e4, seatPrice);
+                }
+            }
+        });
+
+
+
+        f1.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View v) {
+                if (F1.equals("Select")) {
+                    seat = seat - 1;
+                    seatAndAmount.setText(seat + " x " + seatPrice + " = " + seatPrice * seat);
+                    purchase.setText("Buy " + seat + " Seat " + seatPrice * seat + " Taka");
+                    f1.setBackgroundResource(R.drawable.red_chair);
+                    F1 = "";
+                    ForPurchaseLayoutOpen(seat);
+                } else if (!F1.equals("yes")) {
+                    seat = seat + 1;
+                    F1 = ForSelect(seat, f1, seatPrice);
+                }
+            }
+        });
+
+        f2.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View v) {
+                if (F2.equals("Select")) {
+                    seat = seat - 1;
+                    seatAndAmount.setText(seat + " x " + seatPrice + " = " + seatPrice * seat);
+                    purchase.setText("Buy " + seat + " Seat " + seatPrice * seat + " Taka");
+                    f2.setBackgroundResource(R.drawable.red_chair);
+                    F2 = "";
+                    ForPurchaseLayoutOpen(seat);
+                } else if (!F2.equals("yes")) {
+                    seat = seat + 1;
+                    F2 = ForSelect(seat, f2, seatPrice);
+                }
+            }
+        });
+
+        f3.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View v) {
+                if (F3.equals("Select")) {
+                    seat = seat - 1;
+                    seatAndAmount.setText(seat + " x " + seatPrice + " = " + seatPrice * seat);
+                    purchase.setText("Buy " + seat + " Seat " + seatPrice * seat + " Taka");
+                    f3.setBackgroundResource(R.drawable.red_chair);
+                    F3 = "";
+                    ForPurchaseLayoutOpen(seat);
+                } else if (!F3.equals("yes")) {
+                    seat = seat + 1;
+                    F3 = ForSelect(seat, f3, seatPrice);
+                }
+            }
+        });
+
+        f4.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View v) {
+                if (F4.equals("Select")) {
+                    seat = seat - 1;
+                    seatAndAmount.setText(seat + " x " + seatPrice + " = " + seatPrice * seat);
+                    purchase.setText("Buy " + seat + " Seat " + seatPrice * seat + " Taka");
+                    f4.setBackgroundResource(R.drawable.red_chair);
+                    F4 = "";
+                    ForPurchaseLayoutOpen(seat);
+                } else if (!F4.equals("yes")) {
+                    seat = seat + 1;
+                    F4 = ForSelect(seat, f4, seatPrice);
+                }
+            }
+        });
+
+        g1.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View v) {
+                if (G1.equals("Select")) {
+                    seat = seat - 1;
+                    seatAndAmount.setText(seat + " x " + seatPrice + " = " + seatPrice * seat);
+                    purchase.setText("Buy " + seat + " Seat " + seatPrice * seat + " Taka");
+                    g1.setBackgroundResource(R.drawable.red_chair);
+                    G1 = "";
+                    ForPurchaseLayoutOpen(seat);
+                } else if (!G1.equals("yes")) {
+                    seat = seat + 1;
+                    G1 = ForSelect(seat, g1, seatPrice);
+                }
+            }
+        });
+
+        g2.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View v) {
+                if (G2.equals("Select")) {
+                    seat = seat - 1;
+                    seatAndAmount.setText(seat + " x " + seatPrice + " = " + seatPrice * seat);
+                    purchase.setText("Buy " + seat + " Seat " + seatPrice * seat + " Taka");
+                    g2.setBackgroundResource(R.drawable.red_chair);
+                    G2 = "";
+                    ForPurchaseLayoutOpen(seat);
+                } else if (!G2.equals("yes")) {
+                    seat = seat + 1;
+                    G2 = ForSelect(seat, g2, seatPrice);
+                }
+            }
+        });
+
+        g3.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View v) {
+                if (G3.equals("Select")) {
+                    seat = seat - 1;
+                    seatAndAmount.setText(seat + " x " + seatPrice + " = " + seatPrice * seat);
+                    purchase.setText("Buy " + seat + " Seat " + seatPrice * seat + " Taka");
+                    g3.setBackgroundResource(R.drawable.red_chair);
+                    G3 = "";
+                    ForPurchaseLayoutOpen(seat);
+                } else if (!G3.equals("yes")) {
+                    seat = seat + 1;
+                    G3 = ForSelect(seat, g3, seatPrice);
+                }
+            }
+        });
+
+        g4.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View v) {
+                if (G4.equals("Select")) {
+                    seat = seat - 1;
+                    seatAndAmount.setText(seat + " x " + seatPrice + " = " + seatPrice * seat);
+                    purchase.setText("Buy " + seat + " Seat " + seatPrice * seat + " Taka");
+                    g4.setBackgroundResource(R.drawable.red_chair);
+                    G4 = "";
+                    ForPurchaseLayoutOpen(seat);
+                } else if (!G4.equals("yes")) {
+                    seat = seat + 1;
+                    G4 = ForSelect(seat, g4, seatPrice);
+                }
+            }
+        });
+
+        g5.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View v) {
+                if (G5.equals("Select")) {
+                    seat = seat - 1;
+                    seatAndAmount.setText(seat + " x " + seatPrice + " = " + seatPrice * seat);
+                    purchase.setText("Buy " + seat + " Seat " + seatPrice * seat + " Taka");
+                    g5.setBackgroundResource(R.drawable.red_chair);
+                    G5 = "";
+                    ForPurchaseLayoutOpen(seat);
+                } else if (!G5.equals("yes")) {
+                    seat = seat + 1;
+                    G5 = ForSelect(seat, g5, seatPrice);
+                }
+            }
+        });
+
+
+
         purchaseLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (checkPurchase(A1,A2,A3,A4, ticketRef) == 0)
+                if (checkPurchase(A1,A2,A3,A4,B1,B2,B3,B4,C1,C2,C3,C4,D1,D2,D3,D4,E1,E2,E3,E4,F1,F2,F3,F4,G1,G2,G3,G4,G5, ticketRef) == 0)
                 {
                     seat = 0;
                     if (currentUser != null)
@@ -346,6 +878,31 @@ public class TicketActivity extends AppCompatActivity {
                     A2 = snapshot.child("a2").getValue().toString();
                     A3 = snapshot.child("a3").getValue().toString();
                     A4 = snapshot.child("a4").getValue().toString();
+                    B1 = snapshot.child("b1").getValue().toString();
+                    B2 = snapshot.child("b2").getValue().toString();
+                    B3 = snapshot.child("b3").getValue().toString();
+                    B4 = snapshot.child("b4").getValue().toString();
+                    C1 = snapshot.child("c1").getValue().toString();
+                    C2 = snapshot.child("c2").getValue().toString();
+                    C3 = snapshot.child("c3").getValue().toString();
+                    C4 = snapshot.child("c4").getValue().toString();
+                    D1 = snapshot.child("d1").getValue().toString();
+                    D2 = snapshot.child("d2").getValue().toString();
+                    D3 = snapshot.child("d3").getValue().toString();
+                    D4 = snapshot.child("d4").getValue().toString();
+                    E1 = snapshot.child("e1").getValue().toString();
+                    E2 = snapshot.child("e2").getValue().toString();
+                    E3 = snapshot.child("e3").getValue().toString();
+                    E4 = snapshot.child("e4").getValue().toString();
+                    F1 = snapshot.child("f1").getValue().toString();
+                    F2 = snapshot.child("f2").getValue().toString();
+                    F3 = snapshot.child("f3").getValue().toString();
+                    F4 = snapshot.child("f4").getValue().toString();
+                    G1 = snapshot.child("g1").getValue().toString();
+                    G2 = snapshot.child("g2").getValue().toString();
+                    G3 = snapshot.child("g3").getValue().toString();
+                    G4 = snapshot.child("g4").getValue().toString();
+
                     coachNo = snapshot.child("coachNo").getValue().toString();
                     String Price = snapshot.child("price").getValue().toString();
                     seatPrice = Integer.parseInt(Price);
@@ -368,9 +925,86 @@ public class TicketActivity extends AppCompatActivity {
                         a4.setBackgroundResource(R.drawable.green_chair);
                     }
 
+                    if (B1.equals("yes")) {
+                        b1.setBackgroundResource(R.drawable.green_chair);
+                    }
+                    if (B2.equals("yes")) {
+                        b2.setBackgroundResource(R.drawable.green_chair);
+                    }
+                    if (B3.equals("yes")) {
+                        b3.setBackgroundResource(R.drawable.green_chair);
+                    }
+                    if (B4.equals("yes")) {
+                        b4.setBackgroundResource(R.drawable.green_chair);
+                    }
 
+                    if (C1.equals("yes")) {
+                        c1.setBackgroundResource(R.drawable.green_chair);
+                    }
+                    if (C2.equals("yes")) {
+                        c2.setBackgroundResource(R.drawable.green_chair);
+                    }
+                    if (C3.equals("yes")) {
+                        c3.setBackgroundResource(R.drawable.green_chair);
+                    }
+                    if (C4.equals("yes")) {
+                        c4.setBackgroundResource(R.drawable.green_chair);
+                    }
 
+                    if (D1.equals("yes")) {
+                        d1.setBackgroundResource(R.drawable.green_chair);
+                    }
+                    if (D2.equals("yes")) {
+                        d2.setBackgroundResource(R.drawable.green_chair);
+                    }
+                    if (D3.equals("yes")) {
+                        d3.setBackgroundResource(R.drawable.green_chair);
+                    }
+                    if (D4.equals("yes")) {
+                        d4.setBackgroundResource(R.drawable.green_chair);
+                    }
 
+                    if (E1.equals("yes")) {
+                        e1.setBackgroundResource(R.drawable.green_chair);
+                    }
+                    if (E2.equals("yes")) {
+                        e2.setBackgroundResource(R.drawable.green_chair);
+                    }
+                    if (E3.equals("yes")) {
+                        e3.setBackgroundResource(R.drawable.green_chair);
+                    }
+                    if (E4.equals("yes")) {
+                        e4.setBackgroundResource(R.drawable.green_chair);
+                    }
+
+                    if (F1.equals("yes")) {
+                        f1.setBackgroundResource(R.drawable.green_chair);
+                    }
+                    if (F2.equals("yes")) {
+                        f2.setBackgroundResource(R.drawable.green_chair);
+                    }
+                    if (F3.equals("yes")) {
+                        f3.setBackgroundResource(R.drawable.green_chair);
+                    }
+                    if (F4.equals("yes")) {
+                        f4.setBackgroundResource(R.drawable.green_chair);
+                    }
+
+                    if (G1.equals("yes")) {
+                        g1.setBackgroundResource(R.drawable.green_chair);
+                    }
+                    if (G2.equals("yes")) {
+                        g2.setBackgroundResource(R.drawable.green_chair);
+                    }
+                    if (G3.equals("yes")) {
+                        g3.setBackgroundResource(R.drawable.green_chair);
+                    }
+                    if (G4.equals("yes")) {
+                        g4.setBackgroundResource(R.drawable.green_chair);
+                    }
+                    if (G5.equals("yes")) {
+                        g5.setBackgroundResource(R.drawable.green_chair);
+                    }
 
                 }
             }
@@ -384,7 +1018,7 @@ public class TicketActivity extends AppCompatActivity {
 
     }
 
-    private Integer checkPurchase(String A1, String A2, String A3, String A4, DatabaseReference ticketRef) {
+    private Integer checkPurchase(String A1, String A2, String A3, String A4, String B1, String B2,String B3, String B4,String C1,String C2,String C3,String C4,String D1,String D2,String D3,String D4,String E1,String E2,String E3,String E4,String F1,String F2,String F3,String F4,String G1,String G2,String G3,String G4,String G5, DatabaseReference ticketRef) {
         String seat = "";
         if (A1.equals("Select"))
         {
@@ -406,6 +1040,119 @@ public class TicketActivity extends AppCompatActivity {
             ticketRef.child("a4").setValue("yes");
             seat += "(A4)";
         }
+
+        if (B1.equals("Select"))
+        {
+            ticketRef.child("b1").setValue("yes");
+            seat = "(B1)";
+        }
+        if (B2.equals("Select"))
+        {
+            ticketRef.child("b2").setValue("yes");
+            seat += "(B2)";
+        }
+        if (B3.equals("Select"))
+        {
+            ticketRef.child("b3").setValue("yes");
+            seat += "(B3)";
+        }
+        if (B4.equals("Select"))
+        {
+            ticketRef.child("b4").setValue("yes");
+            seat += "(B4)";
+        }
+
+        if (C1.equals("Select")) {
+            ticketRef.child("c1").setValue("yes");
+            seat = "(C1)";
+        }
+        if (C2.equals("Select")) {
+            ticketRef.child("c2").setValue("yes");
+            seat += "(C2)";
+        }
+        if (C3.equals("Select")) {
+            ticketRef.child("c3").setValue("yes");
+            seat += "(C3)";
+        }
+        if (C4.equals("Select")) {
+            ticketRef.child("c4").setValue("yes");
+            seat += "(C4)";
+        }
+
+        if (D1.equals("Select")) {
+            ticketRef.child("d1").setValue("yes");
+            seat = "(D1)";
+        }
+        if (D2.equals("Select")) {
+            ticketRef.child("d2").setValue("yes");
+            seat += "(D2)";
+        }
+        if (D3.equals("Select")) {
+            ticketRef.child("d3").setValue("yes");
+            seat += "(D3)";
+        }
+        if (D4.equals("Select")) {
+            ticketRef.child("d4").setValue("yes");
+            seat += "(D4)";
+        }
+
+        if (E1.equals("Select")) {
+            ticketRef.child("e1").setValue("yes");
+            seat = "(E1)";
+        }
+        if (E2.equals("Select")) {
+            ticketRef.child("e2").setValue("yes");
+            seat += "(E2)";
+        }
+        if (E3.equals("Select")) {
+            ticketRef.child("e3").setValue("yes");
+            seat += "(E3)";
+        }
+        if (E4.equals("Select")) {
+            ticketRef.child("e4").setValue("yes");
+            seat += "(E4)";
+        }
+
+        if (F1.equals("Select")) {
+            ticketRef.child("f1").setValue("yes");
+            seat = "(F1)";
+        }
+        if (F2.equals("Select")) {
+            ticketRef.child("f2").setValue("yes");
+            seat += "(F2)";
+        }
+        if (F3.equals("Select")) {
+            ticketRef.child("f3").setValue("yes");
+            seat += "(F3)";
+        }
+        if (F4.equals("Select")) {
+            ticketRef.child("f4").setValue("yes");
+            seat += "(F4)";
+        }
+
+
+        if (G1.equals("Select")) {
+            ticketRef.child("g1").setValue("yes");
+            seat = "(G1)";
+        }
+        if (G2.equals("Select")) {
+            ticketRef.child("g2").setValue("yes");
+            seat += "(G2)";
+        }
+        if (G3.equals("Select")) {
+            ticketRef.child("g3").setValue("yes");
+            seat += "(G3)";
+        }
+        if (G4.equals("Select")) {
+            ticketRef.child("g4").setValue("yes");
+            seat += "(G4)";
+        }
+        if (G5.equals("Select")) {
+            ticketRef.child("g5").setValue("yes");
+            seat += "(G5)";
+        }
+
+
 
         serverLoad(ticketRef);
 
