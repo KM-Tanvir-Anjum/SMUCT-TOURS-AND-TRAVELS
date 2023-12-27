@@ -31,16 +31,7 @@ public class FeedbackActivity extends AppCompatActivity {
 
     Spinner totalSeatSpinner,seat1Spinner,seat2Spinner,seat3Spinner,routeSpinner,seasonSpinner,dayNightSpinner,ratingsSpinner;
 
-//    private Spinner totalSeatSpinner;
-//    private Spinner seat1Spinner;
-//    private Spinner seat2Spinner;
-//    private Spinner seat3Spinner;
 
-//    private LinearLayout seat1Layout;
-//    private LinearLayout seat2Layout;
-//    private LinearLayout seat3Layout;
-
-    //private Button feedbackBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,15 +40,15 @@ public class FeedbackActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         routeSpinner = findViewById(R.id.feedback_route_spinner);
+        seasonSpinner = findViewById(R.id.feedback_season_spinner);
+        dayNightSpinner = findViewById(R.id.feedback_daynight_spinner);
         totalSeatSpinner = findViewById(R.id.total_seat_spinner);
         seat1Spinner = findViewById(R.id.feedback_seat1_spinner);
         seat2Spinner = findViewById(R.id.feedback_seat2_spinner);
         seat3Spinner = findViewById(R.id.feedback_seat3_spinner);
-        seasonSpinner = findViewById(R.id.feedback_season_spinner);
-        dayNightSpinner = findViewById(R.id.feedback_daynight_spinner);
         ratingsSpinner = findViewById(R.id.feedback_rateings_spinner);
 
-        feedbackBtn = findViewById(R.id.feedback_button_spinner); // Add this line
+        feedbackBtn = findViewById(R.id.feedback_button);
 
         userReference = FirebaseDatabase.getInstance().getReference().child("Feedback");
 
@@ -65,20 +56,23 @@ public class FeedbackActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 updateFeedback();
+
             }
+
         });
     }
     private void updateFeedback(){
+        String dayNight=dayNightSpinner.getSelectedItem().toString();
+        String ratings=ratingsSpinner.getSelectedItem().toString();
         String route=routeSpinner.getSelectedItem().toString();
-        String totalSeat=totalSeatSpinner.getSelectedItem().toString();
+        String season=seasonSpinner.getSelectedItem().toString();
         String seat1=seat1Spinner.getSelectedItem().toString();
         String seat2=seat2Spinner.getSelectedItem().toString();
         String seat3=seat3Spinner.getSelectedItem().toString();
-        String season=seasonSpinner.getSelectedItem().toString();
-        String dayNight=dayNightSpinner.getSelectedItem().toString();
-        String ratings=ratingsSpinner.getSelectedItem().toString();
+        String totalSeat=totalSeatSpinner.getSelectedItem().toString();
 
-        Feedback feedback=new Feedback(route,totalSeat,seat1,seat2,seat3,season,dayNight,ratings);
+
+        Feedback feedback=new Feedback(dayNight,ratings,route,season,seat1,seat2,seat3,totalSeat);
 
         userReference.push().setValue(feedback);
         Toast.makeText(FeedbackActivity.this,"Feedback Accepted",Toast.LENGTH_SHORT).show();
