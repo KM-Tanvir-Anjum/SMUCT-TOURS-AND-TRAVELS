@@ -113,4 +113,93 @@
         <item>"45"</item>
         <item>"60"</item>
     </array>
+
+    <array name="Route">
+        <item>Select Route</item>
+        <item>Dhaka-Khulna</item>
+        <item>Dhaka-Sylhet</item>
+        <item>Dhaka-Chittagong</item>
+    </array>
+
+    <array name="Season">
+        <item>Select Season</item>
+        <item>Summer</item>
+        <item>Rainy Season</item>
+    </array>
+
+    <array name="DayNight">
+        <item>Select</item>
+        <item>Day</item>
+        <item>Night</item>
+    </array>
+
+    <array name="TotalSeat">
+        <item>Number of seats</item>
+        <item>"1"</item>
+        <item>"2"</item>
+        <item>"3"</item>
+    </array>
+
+    <array name="Seat1">
+        <item>Select Your seat Number</item>
+        <item>A1</item>
+        <item>A2</item>
+        <item>A3</item>
+        <item>B1</item>
+        <item>B2</item>
+        <item>B3</item>
+        <item>C1</item>
+        <item>C2</item>
+        <item>C3</item>
+        <item>D1</item>
+        <item>D2</item>
+        <item>D3</item>
+        <item>E1</item>
+        <item>E2</item>
+        <item>E3</item>
+        <item>F1</item>
+        <item>F2</item>
+        <item>F3</item>
+        <item>G1</item>
+        <item>G2</item>
+        <item>G3</item>
+        <item>G4</item>
+    </array>
+
+    <array name="Seat2">
+        <item>Select Your seat Number</item>
+        <item>"NUll"</item>
+        <item>A1</item>
+        <item>A2</item>
+        <item>A3</item>
+        <item>B1</item>
+        <item>B2</item>
+        <item>B3</item>
+        <item>C1</item>
+        <item>C2</item>
+        <item>C3</item>
+        <item>D1</item>
+        <item>D2</item>
+        <item>D3</item>
+        <item>E1</item>
+        <item>E2</item>
+        <item>E3</item>
+        <item>F1</item>
+        <item>F2</item>
+        <item>F3</item>
+        <item>G1</item>
+        <item>G2</item>
+        <item>G3</item>
+        <item>G4</item>
+    </array>
+
+    <array name="Ratings">
+        <item>Rate Seat</item>
+        <item>Best</item>
+        <item>Better</item>
+        <item>Good</item>
+        <item>Not Good</item>
+    </array>
+
+
 </resources>

@@ -12,7 +12,7 @@ import com.tanvir.tt.activity_faq;
 
 public class HomeCategoryActivity extends AppCompatActivity {
 
-    TextView profile, buyTicket, myTicket,faq;
+    TextView profile, buyTicket, myTicket,faq,advanceSearch,feedback;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,12 +23,20 @@ public class HomeCategoryActivity extends AppCompatActivity {
         buyTicket = findViewById(R.id.buy_ticket);
         myTicket = findViewById(R.id.my_ticket);
         faq=findViewById(R.id.faq);
+        feedback=findViewById(R.id.feedback);
 
 
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HomeCategoryActivity.this, UserProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+        feedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeCategoryActivity.this, FeedbackActivity.class);
                 startActivity(intent);
             }
         });
