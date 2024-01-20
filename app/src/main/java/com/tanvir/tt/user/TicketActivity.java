@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -89,7 +88,7 @@ public class TicketActivity extends AppCompatActivity {
         amountLayout = findViewById(R.id.amount_relative_layout);
         purchaseLayout = findViewById(R.id.purchase_relative_layout);
         seatAndAmount = findViewById(R.id.seat_and_amount);
-        purchase = findViewById(R.id.payment);
+        purchase = findViewById(R.id.purchase);
         backBtn = findViewById(R.id.back_btn);
         company = findViewById(R.id.name_of_company);
         company.setText(comapanyName);
@@ -146,13 +145,6 @@ public class TicketActivity extends AppCompatActivity {
 
         serverLoad(ticketRef);
 
-        purchase.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(TicketActivity.this,PaymentActivity.class);
-            startActivity(intent);
-            }
-        });
         a1.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
             @Override

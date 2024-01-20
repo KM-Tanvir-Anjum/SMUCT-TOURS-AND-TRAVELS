@@ -16,6 +16,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "T & T"
 include ':app'
-include ':cronet'
-include ':core'
-include ':testing'

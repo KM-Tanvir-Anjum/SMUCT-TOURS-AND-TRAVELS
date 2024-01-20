@@ -87,7 +87,6 @@
                     android:text="My Ticket"/>
 
                 <TextView
-                    android:id="@+id/advance_search"
                     android:layout_width="140dp"
                     android:layout_height="140dp"
                     android:textStyle="bold"

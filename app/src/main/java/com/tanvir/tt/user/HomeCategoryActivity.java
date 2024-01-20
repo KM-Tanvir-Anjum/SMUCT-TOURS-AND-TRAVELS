@@ -24,15 +24,6 @@ public class HomeCategoryActivity extends AppCompatActivity {
         myTicket = findViewById(R.id.my_ticket);
         faq=findViewById(R.id.faq);
         feedback=findViewById(R.id.feedback);
-        advanceSearch=findViewById(R.id.advance_search);
-
-        advanceSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(HomeCategoryActivity.this,AdvanceSearchActivity.class);
-                startActivity(intent);
-            }
-        });
 
 
         profile.setOnClickListener(new View.OnClickListener() {
